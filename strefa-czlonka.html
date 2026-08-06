@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Strefa Członka — Ogólnopolskie Stowarzyszenie Lekarzy</title>
+<meta name="description" content="Zaloguj się do Strefy Członka Ogólnopolskiego Stowarzyszenia Lekarzy, aby uzyskać dostęp do materiałów szkoleniowych, wydarzeń i dokumentów Stowarzyszenia.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, follow">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#tresc-glowna">Przejdź do treści głównej</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <span class="brand__mark" aria-hidden="true">OSL</span>
+      <span class="brand__text">
+        <span class="brand__name">Ogólnopolskie Stowarzyszenie Lekarzy</span>
+        <span class="brand__sub">Organizacja pożytku publicznego</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-label="Otwórz menu nawigacji" aria-expanded="false"><span></span></button>
+    <nav class="main-nav" aria-label="Nawigacja główna">
+      <ul>
+        <li><a href="index.html#o-nas">O Stowarzyszeniu</a></li>
+        <li><a href="index.html#dzialalnosc">Działalność</a></li>
+        <li><a href="index.html#czlonkostwo">Członkostwo</a></li>
+        <li><a href="index.html#kontakt">Kontakt</a></li>
+        <li><a href="polityka-prywatnosci.html">RODO</a></li>
+      </ul>
+    </nav>
+    <div class="header-cta">
+      <a href="index.html" class="btn btn--outline btn--sm">Strona główna</a>
+    </div>
+  </div>
+</header>
+
+<main id="tresc-glowna">
+  <section class="section" style="padding-top:64px;">
+    <div class="container" style="max-width:480px;">
+      <p class="breadcrumb"><a href="index.html">Strona główna</a> / Strefa Członka</p>
+
+      <div class="card" style="box-shadow: var(--shadow-md);">
+        <span class="eyebrow">Panel dla członków</span>
+        <h1 style="font-size:1.6rem;">Logowanie do Strefy Członka</h1>
+        <p class="lede" style="font-size:1rem;">
+          Dostęp wyłącznie dla zweryfikowanych członków Ogólnopolskiego Stowarzyszenia Lekarzy.
+        </p>
+
+        <form novalidate style="margin-top:20px;">
+          <div style="margin-bottom:20px;">
+            <label for="login">Adres e-mail lub numer PWZ</label>
+            <input type="text" id="login" name="login" required autocomplete="username">
+          </div>
+          <div style="margin-bottom:8px;">
+            <label for="haslo">Hasło</label>
+            <input type="password" id="haslo" name="haslo" required autocomplete="current-password">
+          </div>
+          <p class="field-hint"><a href="#">Nie pamiętasz hasła?</a></p>
+          <button type="submit" class="btn btn--primary btn--block" style="margin-top:16px;">Zaloguj się</button>
+        </form>
+
+        <p class="small" style="margin-top:20px;">
+          Nie masz jeszcze konta? <a href="dolacz.html">Złóż deklarację członkowską</a>.
+        </p>
+        <p class="small">
+          Logowanie odbywa się przy użyciu szyfrowanego połączenia. Dane logowania przetwarzane
+          są zgodnie z <a href="polityka-prywatnosci.html">Polityką Prywatności</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-legal" style="border-top:none; padding-top:0;">
+      <span>© 2026 Ogólnopolskie Stowarzyszenie Lekarzy. Wszelkie prawa zastrzeżone.</span>
+      <div class="footer-legal__links">
+        <a href="index.html">Strona główna</a>
+        <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie-banner" data-cookie-banner role="dialog" aria-live="polite" aria-label="Zgoda na pliki cookies">
+  <div class="container">
+    <p>Ta strona wykorzystuje pliki cookies zgodnie z <a href="polityka-prywatnosci.html#pliki-cookies">Polityką plików cookies</a>.</p>
+    <div class="cookie-banner__actions">
+      <button type="button" class="btn btn--outline-light btn--sm" data-cookie-reject>Tylko niezbędne</button>
+      <button type="button" class="btn btn--primary btn--sm" data-cookie-accept>Akceptuję wszystkie</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
