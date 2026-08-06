@@ -91,12 +91,33 @@ p { margin: 0 0 16px; color: var(--color-text); }
   text-align: center;
 }
 .section-header h2 {
+  position: relative;
   color: var(--color-accent);
   font-weight: 400;
   padding-bottom: 18px;
+  margin-bottom: 22px;
   border-bottom: 1px solid var(--color-border);
 }
-.section--navy .section-header h2 { border-bottom-color: rgba(255,255,255,0.2); }
+/* Mały "daszek" na linii pod nagłówkiem — charakterystyczny detal
+   ze stron towarzystw naukowych (widoczny m.in. na ptgc.pl). */
+.section-header h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -7px;
+  width: 12px;
+  height: 12px;
+  background: var(--color-bg);
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  transform: translateX(-50%) rotate(45deg);
+}
+.section--alt .section-header h2::after { background: var(--color-bg-alt); }
+.section--navy .section-header h2 { border-bottom-color: rgba(255,255,255,0.25); }
+.section--navy .section-header h2::after {
+  background: var(--color-navy);
+  border-color: rgba(255,255,255,0.25);
+}
 
 .eyebrow {
   display: inline-block;
