@@ -2,11 +2,11 @@
 <html lang="pl">
 <head>
 <meta charset="utf-8">
-<title>Dołącz do Stowarzyszenia — Ogólnopolskie Stowarzyszenie Lekarzy</title>
-<meta name="description" content="Deklaracja członkowska Ogólnopolskiego Stowarzyszenia Lekarzy — dołącz do organizacji reprezentującej interesy zawodowe lekarzy w Polsce.">
+<title>Kontakt — Ogólnopolskie Stowarzyszenie Lekarzy</title>
+<meta name="description" content="Dane kontaktowe Zarządu Głównego Ogólnopolskiego Stowarzyszenia Lekarzy oraz formularz kontaktowy.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://www.osl-przyklad.pl/dolacz.html">
+<link rel="canonical" href="https://www.osl-przyklad.pl/kontakt.html">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -21,6 +21,7 @@
     </div>
     <div class="topbar__contacts">
       <a href="strefa-czlonka.html">Strefa Członka</a>
+      <a href="dolacz.html">Dołącz do Stowarzyszenia</a>
     </div>
   </div>
 </div>
@@ -42,12 +43,13 @@
         <li><a href="struktura-organizacyjna.html">Struktura organizacyjna</a></li>
         <li><a href="czlonkostwo.html">Sprawy członkowskie</a></li>
         <li><a href="aktualnosci.html">Aktualności</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
+        <li><a href="kontakt.html" aria-current="page">Kontakt</a></li>
         <li><a href="polityka-prywatnosci.html">RODO</a></li>
       </ul>
     </nav>
     <div class="header-cta">
       <a href="index.html" class="btn btn--outline btn--sm">Strona główna</a>
+      <a href="dolacz.html" class="btn btn--primary btn--sm">Dołącz do nas</a>
     </div>
   </div>
 </header>
@@ -55,17 +57,13 @@
 <main id="tresc-glowna">
   <section class="section" style="padding-top:56px;">
     <div class="container">
-      <p class="breadcrumb"><a href="index.html">Strona główna</a> / Dołącz do Stowarzyszenia</p>
+      <p class="breadcrumb"><a href="index.html">Strona główna</a> / Kontakt</p>
 
-      <div class="section-header" style="text-align:left; max-width:720px; margin-left:0;">
-        <span class="eyebrow">Deklaracja członkowska</span>
-        <h1>Zostań członkiem Ogólnopolskiego Stowarzyszenia Lekarzy</h1>
-        <p class="lede">
-          Wypełnij poniższą deklarację, aby rozpocząć proces przystąpienia do Stowarzyszenia.
-          Wniosek zostanie rozpatrzony przez właściwy terytorialnie Zarząd Oddziału zgodnie
-          ze statutem, w terminie do 14 dni roboczych.
-        </p>
+      <div class="section-header" style="text-align:left; max-width:820px; margin-left:0;">
+        <span class="eyebrow">Kontakt</span>
+        <h1>Skontaktuj się z Zarządem Głównym</h1>
       </div>
+
 
       <div class="grid grid--2" style="gap:48px; align-items:start;">
         <form data-requires-consent novalidate>
@@ -79,88 +77,59 @@
               <input type="text" id="nazwisko" name="nazwisko" required autocomplete="family-name">
             </div>
             <div>
-              <label for="pwz">Numer Prawa Wykonywania Zawodu (PWZ) <span class="required">*</span></label>
-              <input type="text" id="pwz" name="pwz" required inputmode="numeric" pattern="[0-9]{7}">
-              <p class="field-hint">7-cyfrowy numer nadany przez Okręgową Izbę Lekarską.</p>
-            </div>
-            <div>
-              <label for="specjalizacja">Specjalizacja</label>
-              <input type="text" id="specjalizacja" name="specjalizacja" autocomplete="off">
-            </div>
-            <div>
               <label for="email">Adres e-mail <span class="required">*</span></label>
               <input type="email" id="email" name="email" required autocomplete="email">
             </div>
             <div>
-              <label for="telefon">Numer telefonu <span class="required">*</span></label>
-              <input type="tel" id="telefon" name="telefon" required autocomplete="tel">
+              <label for="telefon">Numer telefonu</label>
+              <input type="tel" id="telefon" name="telefon" autocomplete="tel">
             </div>
             <div class="full">
-              <label for="oddzial">Oddział wojewódzki <span class="required">*</span></label>
-              <select id="oddzial" name="oddzial" required>
-                <option value="">— wybierz województwo —</option>
-                <option>Mazowieckie</option>
-                <option>Małopolskie</option>
-                <option>Śląskie</option>
-                <option>Wielkopolskie</option>
-                <option>Dolnośląskie</option>
-                <option>Pomorskie</option>
-                <option>Inne</option>
+              <label for="temat">Temat wiadomości <span class="required">*</span></label>
+              <select id="temat" name="temat" required>
+                <option value="">— wybierz —</option>
+                <option value="czlonkostwo">Członkostwo w Stowarzyszeniu</option>
+                <option value="szkolenia">Szkolenia i konferencje</option>
+                <option value="wspolpraca">Współpraca / partnerstwo</option>
+                <option value="media">Zapytanie medialne</option>
+                <option value="inne">Inne</option>
               </select>
             </div>
             <div class="full">
-              <label for="uwagi">Uwagi (opcjonalnie)</label>
-              <textarea id="uwagi" name="uwagi"></textarea>
+              <label for="wiadomosc">Treść wiadomości <span class="required">*</span></label>
+              <textarea id="wiadomosc" name="wiadomosc" required></textarea>
             </div>
           </div>
 
           <div class="consent-block">
             <div class="consent-row">
-              <input type="checkbox" id="zgoda-statut" name="zgoda_statut" required>
-              <label for="zgoda-statut">
-                Oświadczam, że zapoznałem/am się ze statutem Stowarzyszenia i zobowiązuję się
-                do jego przestrzegania. <span class="required">*</span>
-              </label>
-            </div>
-            <div class="consent-row">
               <input type="checkbox" id="zgoda-rodo" name="zgoda_rodo" data-consent-required required>
               <label for="zgoda-rodo">
-                Wyrażam zgodę na przetwarzanie moich danych osobowych, w tym danych zawartych
-                w deklaracji członkowskiej, przez Ogólnopolskie Stowarzyszenie Lekarzy w celu
-                rozpatrzenia wniosku o członkostwo i prowadzenia ewidencji członków, zgodnie
-                z <a href="polityka-prywatnosci.html">Polityką Prywatności</a>. Podanie danych
-                jest dobrowolne, lecz niezbędne do rozpatrzenia wniosku. <span class="required">*</span>
-              </label>
-            </div>
-            <div class="consent-row">
-              <input type="checkbox" id="zgoda-newsletter" name="zgoda_newsletter">
-              <label for="zgoda-newsletter">
-                Wyrażam zgodę na otrzymywanie newslettera i informacji o wydarzeniach Stowarzyszenia
-                drogą elektroniczną (zgoda opcjonalna, możliwa do wycofania w każdym czasie).
+                Wyrażam zgodę na przetwarzanie moich danych osobowych podanych w formularzu przez
+                Ogólnopolskie Stowarzyszenie Lekarzy w celu obsługi niniejszego zgłoszenia, zgodnie
+                z <a href="polityka-prywatnosci.html">Polityką Prywatności</a>. <span class="required">*</span>
               </label>
             </div>
             <p class="field-hint" data-consent-error hidden style="color:#b3261e; margin-top:10px;">
-              Aby wysłać deklarację, wymagana jest zgoda na przetwarzanie danych osobowych.
+              Aby wysłać formularz, wymagana jest zgoda na przetwarzanie danych osobowych.
             </p>
           </div>
 
-          <button type="submit" class="btn btn--primary" style="margin-top:20px;">Wyślij deklarację członkowską</button>
+          <button type="submit" class="btn btn--primary" style="margin-top:16px;">Wyślij wiadomość</button>
         </form>
 
         <div class="info-panel">
-          <h3>Jak przebiega proces?</h3>
+          <h3>Zarząd Główny OSL</h3>
           <ul class="info-list">
-            <li><span class="icon">1</span> Wypełnienie i wysłanie deklaracji online.</li>
-            <li><span class="icon">2</span> Weryfikacja formalna przez biuro Zarządu Głównego.</li>
-            <li><span class="icon">3</span> Decyzja właściwego Zarządu Oddziału (do 14 dni).</li>
-            <li><span class="icon">4</span> Opłacenie składki członkowskiej i aktywacja konta w Strefie Członka.</li>
+            <li><span class="icon">📍</span> ul. Przykładowa 12, 00-001 Warszawa</li>
+            <li><span class="icon">📞</span> +48 22 000 00 00</li>
+            <li><span class="icon">✉️</span> <a href="mailto:kontakt@osl-przyklad.pl">kontakt@osl-przyklad.pl</a></li>
+            <li><span class="icon">🏛️</span> KRS 0000000000 · NIP 000-00-00-000 · REGON 000000000</li>
+            <li><span class="icon">🕘</span> Biuro czynne: pon.–pt., 9:00–16:00</li>
           </ul>
-          <p class="small" style="color:#cfd9e4; margin-top:16px;">
-            Masz pytania dotyczące członkostwa? Napisz na
-            <a href="mailto:czlonkostwo@osl-przyklad.pl">czlonkostwo@osl-przyklad.pl</a>.
-          </p>
         </div>
       </div>
+
     </div>
   </section>
 </main>
@@ -170,33 +139,40 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <h4>Ogólnopolskie Stowarzyszenie Lekarzy</h4>
-        <p>Niezależna organizacja reprezentująca interesy zawodowe lekarzy w Polsce.</p>
+        <p>Niezależna organizacja reprezentująca interesy zawodowe lekarzy w Polsce. Działamy na rzecz wysokich standardów etyki, wiedzy i jakości opieki medycznej.</p>
       </div>
       <div>
         <h4>Stowarzyszenie</h4>
         <ul>
           <li><a href="o-nas.html">O nas</a></li>
-          <li><a href="dzialalnosc.html">Działalność</a></li>
+          <li><a href="struktura-organizacyjna.html">Struktura organizacyjna</a></li>
+          <li><a href="statut.html">Statut</a></li>
+          <li><a href="aktualnosci.html">Aktualności</a></li>
         </ul>
       </div>
       <div>
         <h4>Dla lekarzy</h4>
         <ul>
-          <li><a href="dolacz.html">Członkostwo</a></li>
+          <li><a href="czlonkostwo.html">Członkostwo</a></li>
+          <li><a href="dolacz.html">Deklaracja członkowska</a></li>
           <li><a href="strefa-czlonka.html">Strefa Członka</a></li>
+          <li><a href="dokumenty.html">Dokumenty do pobrania</a></li>
         </ul>
       </div>
       <div>
         <h4>Informacje prawne</h4>
         <ul>
           <li><a href="polityka-prywatnosci.html">Polityka prywatności (RODO)</a></li>
+          <li><a href="polityka-prywatnosci.html#pliki-cookies">Polityka plików cookies</a></li>
+          <li><a href="regulamin.html">Regulamin serwisu</a></li>
+          <li><a href="dostepnosc.html">Dostępność</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-legal">
       <span>© 2026 Ogólnopolskie Stowarzyszenie Lekarzy. Wszelkie prawa zastrzeżone.</span>
       <div class="footer-legal__links">
-        <a href="index.html">Strona główna</a>
+        <a href="mapa-strony.html">Mapa strony</a>
         <a href="kontakt.html">Kontakt</a>
       </div>
     </div>
