@@ -2,11 +2,11 @@
 <html lang="pl">
 <head>
 <meta charset="utf-8">
-<title>Dołącz do Stowarzyszenia — Polskie Stowarzyszenie Lekarzy</title>
-<meta name="description" content="Deklaracja członkowska Polskiego Stowarzyszenia Lekarzy — dołącz do organizacji reprezentującej interesy zawodowe lekarzy w Polsce.">
+<title>Dołącz do Stowarzyszenia — Polskie Stowarzyszenie Lekarzy Genetyków Klinicznych</title>
+<meta name="description" content="Deklaracja członkowska Polskiego Stowarzyszenia Lekarzy Genetyków Klinicznych — dołącz do organizacji reprezentującej interesy zawodowe lekarzy w Polsce.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://www.psl-przyklad.pl/dolacz.html">
+<link rel="canonical" href="https://www.pslgk-przyklad.pl/dolacz.html">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -17,7 +17,7 @@
   <div class="container">
     <div class="topbar__contacts">
       <span>tel. +48 22 000 00 00</span>
-      <span>e-mail: <a href="mailto:kontakt@psl-przyklad.pl">kontakt@psl-przyklad.pl</a></span>
+      <span>e-mail: <a href="mailto:kontakt@pslgk-przyklad.pl">kontakt@pslgk-przyklad.pl</a></span>
     </div>
     <div class="topbar__contacts">
       <a href="strefa-czlonka.html">Strefa Członka</a>
@@ -28,9 +28,9 @@
 <header class="site-header">
   <div class="container">
     <a href="index.html" class="brand">
-      <span class="brand__mark" aria-hidden="true">PSL</span>
+      <span class="brand__mark" aria-hidden="true">PSLGK</span>
       <span class="brand__text">
-        <span class="brand__name">Polskie Stowarzyszenie Lekarzy</span>
+        <span class="brand__name">Polskie Stowarzyszenie Lekarzy Genetyków Klinicznych</span>
         <span class="brand__sub">Organizacja pożytku publicznego</span>
       </span>
     </a>
@@ -59,11 +59,11 @@
 
       <div class="section-header" style="text-align:left; max-width:720px; margin-left:0;">
         <span class="eyebrow">Deklaracja członkowska</span>
-        <h1>Zostań członkiem Polskiego Stowarzyszenia Lekarzy</h1>
+        <h1>Zostań członkiem Polskiego Stowarzyszenia Lekarzy Genetyków Klinicznych</h1>
         <p class="lede">
           Wypełnij poniższą deklarację, aby rozpocząć proces przystąpienia do Stowarzyszenia.
-          Wniosek zostanie rozpatrzony przez właściwy terytorialnie Zarząd Oddziału zgodnie
-          ze statutem, w terminie do 14 dni roboczych.
+          Wniosek zostanie rozpatrzony przez Zarząd Główny zgodnie ze statutem,
+          w terminie do 14 dni roboczych.
         </p>
       </div>
 
@@ -84,8 +84,13 @@
               <p class="field-hint">7-cyfrowy numer nadany przez Okręgową Izbę Lekarską.</p>
             </div>
             <div>
-              <label for="specjalizacja">Specjalizacja</label>
-              <input type="text" id="specjalizacja" name="specjalizacja" autocomplete="off">
+              <label for="specjalizacja">Etap specjalizacji z genetyki klinicznej <span class="required">*</span></label>
+              <select id="specjalizacja" name="specjalizacja" required>
+                <option value="">— wybierz —</option>
+                <option>Specjalista genetyki klinicznej</option>
+                <option>Lekarz w trakcie specjalizacji (rezydent)</option>
+                <option>Lekarz rozpoczynający szkolenie specjalizacyjne</option>
+              </select>
             </div>
             <div>
               <label for="email">Adres e-mail <span class="required">*</span></label>
@@ -96,16 +101,18 @@
               <input type="tel" id="telefon" name="telefon" required autocomplete="tel">
             </div>
             <div class="full">
-              <label for="oddzial">Oddział wojewódzki <span class="required">*</span></label>
+              <label for="oddzial">Najbliższy ośrodek regionalny <span class="required">*</span></label>
               <select id="oddzial" name="oddzial" required>
-                <option value="">— wybierz województwo —</option>
-                <option>Mazowieckie</option>
-                <option>Małopolskie</option>
-                <option>Śląskie</option>
-                <option>Wielkopolskie</option>
-                <option>Dolnośląskie</option>
-                <option>Pomorskie</option>
-                <option>Inne</option>
+                <option value="">— wybierz ośrodek —</option>
+                <option>Warszawa</option>
+                <option>Kraków</option>
+                <option>Poznań</option>
+                <option>Wrocław</option>
+                <option>Gdańsk</option>
+                <option>Łódź</option>
+                <option>Katowice</option>
+                <option>Białystok</option>
+                <option>Inny</option>
               </select>
             </div>
             <div class="full">
@@ -126,7 +133,7 @@
               <input type="checkbox" id="zgoda-rodo" name="zgoda_rodo" data-consent-required required>
               <label for="zgoda-rodo">
                 Wyrażam zgodę na przetwarzanie moich danych osobowych, w tym danych zawartych
-                w deklaracji członkowskiej, przez Polskie Stowarzyszenie Lekarzy w celu
+                w deklaracji członkowskiej, przez Polskie Stowarzyszenie Lekarzy Genetyków Klinicznych w celu
                 rozpatrzenia wniosku o członkostwo i prowadzenia ewidencji członków, zgodnie
                 z <a href="polityka-prywatnosci.html">Polityką Prywatności</a>. Podanie danych
                 jest dobrowolne, lecz niezbędne do rozpatrzenia wniosku. <span class="required">*</span>
@@ -152,12 +159,12 @@
           <ul class="info-list">
             <li><span class="icon">1</span> Wypełnienie i wysłanie deklaracji online.</li>
             <li><span class="icon">2</span> Weryfikacja formalna przez biuro Zarządu Głównego.</li>
-            <li><span class="icon">3</span> Decyzja właściwego Zarządu Oddziału (do 14 dni).</li>
+            <li><span class="icon">3</span> Decyzja Zarządu Głównego (do 14 dni).</li>
             <li><span class="icon">4</span> Opłacenie składki członkowskiej i aktywacja konta w Strefie Członka.</li>
           </ul>
           <p class="small" style="color:#cfd9e4; margin-top:16px;">
             Masz pytania dotyczące członkostwa? Napisz na
-            <a href="mailto:czlonkostwo@psl-przyklad.pl">czlonkostwo@psl-przyklad.pl</a>.
+            <a href="mailto:czlonkostwo@pslgk-przyklad.pl">czlonkostwo@pslgk-przyklad.pl</a>.
           </p>
         </div>
       </div>
@@ -169,7 +176,7 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <h4>Polskie Stowarzyszenie Lekarzy</h4>
+        <h4>Polskie Stowarzyszenie Lekarzy Genetyków Klinicznych</h4>
         <p>Niezależna organizacja reprezentująca interesy zawodowe lekarzy w Polsce.</p>
       </div>
       <div>
@@ -194,7 +201,7 @@
       </div>
     </div>
     <div class="footer-legal">
-      <span>© 2026 Polskie Stowarzyszenie Lekarzy. Wszelkie prawa zastrzeżone.</span>
+      <span>© 2026 Polskie Stowarzyszenie Lekarzy Genetyków Klinicznych. Wszelkie prawa zastrzeżone.</span>
       <div class="footer-legal__links">
         <a href="index.html">Strona główna</a>
         <a href="kontakt.html">Kontakt</a>
@@ -202,7 +209,7 @@
     </div>
   </div>
   <div class="footer-totop">
-    <a href="#tresc-glowna"><span class="footer-totop__arrow" aria-hidden="true">↑</span>Przewiń w górę<br>Polskie Stowarzyszenie Lekarzy</a>
+    <a href="#tresc-glowna"><span class="footer-totop__arrow" aria-hidden="true">↑</span>Przewiń w górę<br>Polskie Stowarzyszenie Lekarzy Genetyków Klinicznych</a>
   </div>
 </footer>
 
@@ -222,7 +229,7 @@
 </button>
 <div class="staff-chat-panel" id="staff-chat-panel" data-staff-chat-panel role="dialog" aria-label="Czat wewnętrzny biura">
   <div class="staff-chat__head">
-    <strong>Czat wewnętrzny — Biuro PSL</strong>
+    <strong>Czat wewnętrzny — Biuro PSLGK</strong>
     <span>Widoczny tylko dla zalogowanych pracowników</span>
   </div>
   <div class="staff-chat__log" data-staff-chat-log></div>

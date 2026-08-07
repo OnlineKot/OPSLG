@@ -215,7 +215,8 @@ p { margin: 0 0 16px; color: var(--color-text); }
   color: var(--color-navy);
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.68rem;
+  letter-spacing: -0.03em;
   flex-shrink: 0;
 }
 .brand__text { line-height: 1.2; }

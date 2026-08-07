@@ -12,7 +12,7 @@
   }
 
   // RODO / cookies consent banner
-  var CONSENT_KEY = "psl_cookie_consent";
+  var CONSENT_KEY = "pslgk_cookie_consent";
   var banner = document.querySelector("[data-cookie-banner]");
 
   function getConsent() {
@@ -62,7 +62,7 @@
     var staffLog = staffPanel.querySelector("[data-staff-chat-log]");
     var staffForm = staffPanel.querySelector("[data-staff-chat-form]");
     var staffInput = staffPanel.querySelector("[data-staff-chat-input]");
-    var STAFF_KEY = "psl_staff_chat_demo";
+    var STAFF_KEY = "pslgk_staff_chat_demo";
 
     var seedMessages = [
       { author: "Biuro Zarządu", time: "09:12", text: "Dzień dobry! Przypominam o dzisiejszym spotkaniu Zarządu o 14:00." },
