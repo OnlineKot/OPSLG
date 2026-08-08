@@ -444,6 +444,27 @@ p { margin: 0 0 16px; color: var(--color-text); }
   background: var(--color-bg-alt);
 }
 
+/* Karty-linki "4 strefy" na stronie głównej — prowadzą do hubów
+   dopasowanych do odbiorcy (pacjent, genetyk kliniczny, lekarz
+   kierujący, student). */
+.zone-card {
+  display: block;
+  color: inherit;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.zone-card:hover,
+.zone-card:focus-visible {
+  text-decoration: none;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-accent);
+}
+.zone-card h3 { color: var(--color-navy); }
+.zone-card .card__icon {
+  background: var(--color-accent);
+  color: #fff;
+}
+
 /* Numbered steps for membership */
 .steps { counter-reset: step; }
 .step {
@@ -667,6 +688,7 @@ textarea { resize: vertical; min-height: 120px; }
   padding-bottom: 32px;
   border-bottom: 1px solid rgba(255,255,255,0.12);
 }
+.footer-grid--5 { grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr; }
 .footer-grid h4 {
   color: #fff;
   font-size: 0.85rem;
