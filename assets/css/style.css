@@ -460,9 +460,12 @@ p { margin: 0 0 16px; color: var(--color-text); }
   border-color: var(--color-accent);
 }
 .zone-card h3 { color: var(--color-navy); }
-.zone-card .card__icon {
-  background: var(--color-accent);
-  color: #fff;
+.card__icon--zone {
+  background: transparent;
+  border: 2px solid var(--color-accent);
+  border-radius: 50%;
+  color: var(--color-accent);
+  font-family: var(--font-heading);
 }
 
 /* Numbered steps for membership */
@@ -743,38 +746,31 @@ textarea { resize: vertical; min-height: 120px; }
 }
 
 /* ---------------- Czat wewnętrzny dla pracowników (makieta) ----------------
-   Dyskretna zakładka przyklejona do dolnej krawędzi ekranu. Domyślnie
-   niemal niewidoczna — ma nie rzucać się w oczy odwiedzającym stronę
-   publicznie, a jedynie być łatwa do znalezienia dla pracowników biura,
-   którzy wiedzą, gdzie szukać. */
-.staff-chat-toggle {
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  z-index: 900;
-  width: 40px;
-  height: 40px;
-  padding: 0;
+   Wpięty w stopkę jako zwijany pasek — nie jest to pływająca "bańka"
+   AI-czatu, tylko zwykły, dyskretny element stopki, dostępny dla
+   pracowników biura, którzy wiedzą, gdzie go szukać. Za przyciskiem
+   toggle chowa się najpierw ekran logowania (makieta), a dopiero
+   po "zalogowaniu" — sam czat. */
+.footer-chat {
+  border-top: 1px solid rgba(255,255,255,0.12);
+  background: #23261f;
+}
+.footer-chat__toggle {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #2a2f2a;
-  color: #cfd3cf;
-  border: 1px solid #3d423d;
-  border-radius: 50%;
-  font-size: 1rem;
-  line-height: 1;
+  gap: 8px;
+  width: 100%;
+  background: none;
+  border: none;
+  color: #9ea49e;
+  font-size: 0.78rem;
+  padding: 12px 0;
   cursor: pointer;
-  opacity: 0.5;
-  box-shadow: var(--shadow-sm);
-  transition: opacity 0.15s ease, transform 0.15s ease;
 }
-.staff-chat-toggle:hover,
-.staff-chat-toggle:focus-visible {
-  opacity: 1;
-  transform: translateY(-2px);
-}
-.staff-chat-toggle .dot {
+.footer-chat__toggle:hover,
+.footer-chat__toggle:focus-visible { color: #fff; }
+.footer-chat__toggle .dot {
   display: block;
   width: 7px;
   height: 7px;
@@ -783,36 +779,49 @@ textarea { resize: vertical; min-height: 120px; }
 }
 
 .staff-chat-panel {
-  position: fixed;
-  right: 18px;
-  bottom: 66px;
-  z-index: 899;
-  width: 260px;
-  max-width: calc(100vw - 32px);
-  background: #ffffff;
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
-  box-shadow: var(--shadow-md);
-  transform: translateY(8px);
-  opacity: 0;
-  visibility: hidden;
-  transition: transform 0.15s ease, opacity 0.15s ease;
+  max-width: 300px;
+  margin: 0 auto;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.2s ease;
 }
-.staff-chat-panel.is-open {
-  transform: translateY(0);
-  opacity: 1;
-  visibility: visible;
+.staff-chat-panel.is-open { max-height: 480px; }
+
+.staff-chat-panel__inner {
+  background: #ffffff;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
 }
 
 .staff-chat__head {
   background: var(--color-navy-dark);
   color: #fff;
-  padding: 8px 12px;
-  border-radius: 10px 10px 0 0;
-  font-size: 0.72rem;
+  padding: 10px 14px;
+  font-size: 0.74rem;
 }
-.staff-chat__head strong { display: block; font-size: 0.76rem; }
-.staff-chat__head span { display: block; font-size: 0.64rem; color: #b7bcb7; margin-top: 1px; }
+.staff-chat__head strong { display: block; font-size: 0.8rem; }
+.staff-chat__head span { display: block; font-size: 0.66rem; color: #b7bcb7; margin-top: 1px; }
+
+.staff-chat__login {
+  padding: 14px;
+  background: #fff;
+}
+.staff-chat__login label {
+  font-size: 0.74rem;
+  margin-bottom: 4px;
+}
+.staff-chat__login input {
+  width: 100%;
+  padding: 7px 9px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+}
+.staff-chat__login button { width: 100%; }
+.staff-chat__login .field-hint { margin: 10px 0 0; text-align: center; }
 
 .staff-chat__log {
   height: 150px;
@@ -872,10 +881,6 @@ textarea { resize: vertical; min-height: 120px; }
   font-size: 0.62rem;
   color: var(--color-text-muted);
   border-top: 1px dashed var(--color-border);
-}
-
-@media (max-width: 480px) {
-  .staff-chat-toggle, .staff-chat-panel { right: 12px; }
 }
 
 /* ---------------- Cookie banner ---------------- */

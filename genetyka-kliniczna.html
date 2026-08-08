@@ -173,6 +173,37 @@
   <div class="footer-totop">
     <a href="#tresc-glowna"><span class="footer-totop__arrow" aria-hidden="true">↑</span>Przewiń w górę<br>Polskie Towarzystwo Lekarzy Genetyków Klinicznych</a>
   </div>
+  <div class="footer-chat">
+    <div class="container">
+      <button type="button" class="footer-chat__toggle" data-staff-chat-toggle aria-expanded="false" aria-controls="staff-chat-panel">
+        <span class="dot" aria-hidden="true"></span> Czat pracowniczy
+      </button>
+      <div class="staff-chat-panel" id="staff-chat-panel" data-staff-chat-panel role="dialog" aria-label="Czat wewnętrzny biura">
+        <div class="staff-chat-panel__inner">
+          <div class="staff-chat__head">
+            <strong>Czat wewnętrzny — Biuro PTLGK</strong>
+            <span>Widoczny tylko dla zalogowanych pracowników</span>
+          </div>
+          <form class="staff-chat__login" data-staff-chat-login>
+            <label for="staff-login-email">Adres e-mail</label>
+            <input type="email" id="staff-login-email" placeholder="jan.kowalski@ptlgk-przyklad.pl" required>
+            <label for="staff-login-haslo">Hasło</label>
+            <input type="password" id="staff-login-haslo" required>
+            <button type="submit" class="btn btn--primary btn--sm">Zaloguj się</button>
+            <p class="field-hint">Wersja demonstracyjna — logowanie akceptuje dowolne dane.</p>
+          </form>
+          <div class="staff-chat__body" data-staff-chat-body hidden>
+            <div class="staff-chat__log" data-staff-chat-log></div>
+            <form class="staff-chat__form" data-staff-chat-form>
+              <input type="text" data-staff-chat-input placeholder="Napisz wiadomość…" autocomplete="off">
+              <button type="submit">Wyślij</button>
+            </form>
+            <p class="staff-chat__notice">Wersja demonstracyjna — wiadomości nie są nigdzie wysyłane, znikają po zamknięciu karty.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </footer>
 
 <div class="cookie-banner" data-cookie-banner role="dialog" aria-live="polite" aria-label="Zgoda na pliki cookies">
@@ -183,23 +214,6 @@
       <button type="button" class="btn btn--primary btn--sm" data-cookie-accept>Akceptuję wszystkie</button>
     </div>
   </div>
-</div>
-
-<!-- ================= CZAT WEWNĘTRZNY (makieta, ukryty przy dolnej krawędzi) ================= -->
-<button type="button" class="staff-chat-toggle" data-staff-chat-toggle aria-expanded="false" aria-controls="staff-chat-panel" aria-label="Czat pracowniczy" title="Czat pracowniczy">
-  <span class="dot" aria-hidden="true"></span>
-</button>
-<div class="staff-chat-panel" id="staff-chat-panel" data-staff-chat-panel role="dialog" aria-label="Czat wewnętrzny biura">
-  <div class="staff-chat__head">
-    <strong>Czat wewnętrzny — Biuro PTLGK</strong>
-    <span>Widoczny tylko dla zalogowanych pracowników</span>
-  </div>
-  <div class="staff-chat__log" data-staff-chat-log></div>
-  <form class="staff-chat__form" data-staff-chat-form>
-    <input type="text" data-staff-chat-input placeholder="Napisz wiadomość…" autocomplete="off">
-    <button type="submit">Wyślij</button>
-  </form>
-  <p class="staff-chat__notice">Wersja demonstracyjna — wiadomości nie są nigdzie wysyłane, znikają po zamknięciu karty.</p>
 </div>
 
 <script src="assets/js/main.js"></script>

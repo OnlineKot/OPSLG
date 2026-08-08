@@ -113,22 +113,22 @@
       </div>
       <div class="grid grid--4">
         <a href="dla-pacjentow.html" class="card zone-card">
-          <div class="card__icon">◆</div>
+          <div class="card__icon card__icon--zone">P</div>
           <h3>Dla pacjentów</h3>
           <p>Poradnictwo genetyczne, poradnie genetyczne i organizacje wsparcia dla pacjentów z chorobami genetycznymi.</p>
         </a>
         <a href="genetyka-kliniczna.html" class="card zone-card">
-          <div class="card__icon">◆</div>
+          <div class="card__icon card__icon--zone">G</div>
           <h3>Dla genetyków klinicznych</h3>
           <p>Standardy, rekomendacje, aktualności oraz informacje o specjalizacji z genetyki klinicznej.</p>
         </a>
         <a href="dla-lekarzy-kierujacych.html" class="card zone-card">
-          <div class="card__icon">◆</div>
+          <div class="card__icon card__icon--zone">L</div>
           <h3>Dla lekarzy kierujących</h3>
           <p>Kogo i kiedy kierować do poradni genetycznej, rekomendacje oraz możliwości współpracy.</p>
         </a>
         <a href="dla-studentow.html" class="card zone-card">
-          <div class="card__icon">◆</div>
+          <div class="card__icon card__icon--zone">S</div>
           <h3>Dla studentów</h3>
           <p>Edukacja, granty, stypendia i ścieżka specjalizacji z genetyki klinicznej dla młodych lekarzy.</p>
         </a>
@@ -293,7 +293,38 @@
         <blockquote class="quote">
           „Członkostwo w Towarzystwie dało mi realne wsparcie merytoryczne i poczucie
           przynależności do środowiska, które dba o wspólne standardy diagnostyki genetycznej.”
-          <footer>— lek. med. Anna Kowalska, specjalista genetyki klinicznej</footer>
+          <footer>— lek. med. Anna Kowalska, specjalista genetyki klinicznej  <div class="footer-chat">
+    <div class="container">
+      <button type="button" class="footer-chat__toggle" data-staff-chat-toggle aria-expanded="false" aria-controls="staff-chat-panel">
+        <span class="dot" aria-hidden="true"></span> Czat pracowniczy
+      </button>
+      <div class="staff-chat-panel" id="staff-chat-panel" data-staff-chat-panel role="dialog" aria-label="Czat wewnętrzny biura">
+        <div class="staff-chat-panel__inner">
+          <div class="staff-chat__head">
+            <strong>Czat wewnętrzny — Biuro PTLGK</strong>
+            <span>Widoczny tylko dla zalogowanych pracowników</span>
+          </div>
+          <form class="staff-chat__login" data-staff-chat-login>
+            <label for="staff-login-email">Adres e-mail</label>
+            <input type="email" id="staff-login-email" placeholder="jan.kowalski@ptlgk-przyklad.pl" required>
+            <label for="staff-login-haslo">Hasło</label>
+            <input type="password" id="staff-login-haslo" required>
+            <button type="submit" class="btn btn--primary btn--sm">Zaloguj się</button>
+            <p class="field-hint">Wersja demonstracyjna — logowanie akceptuje dowolne dane.</p>
+          </form>
+          <div class="staff-chat__body" data-staff-chat-body hidden>
+            <div class="staff-chat__log" data-staff-chat-log></div>
+            <form class="staff-chat__form" data-staff-chat-form>
+              <input type="text" data-staff-chat-input placeholder="Napisz wiadomość…" autocomplete="off">
+              <button type="submit">Wyślij</button>
+            </form>
+            <p class="staff-chat__notice">Wersja demonstracyjna — wiadomości nie są nigdzie wysyłane, znikają po zamknięciu karty.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
         </blockquote>
       </div>
     </div>
@@ -602,23 +633,6 @@
       <button type="button" class="btn btn--primary btn--sm" data-cookie-accept>Akceptuję wszystkie</button>
     </div>
   </div>
-</div>
-
-<!-- ================= CZAT WEWNĘTRZNY (makieta, ukryty przy dolnej krawędzi) ================= -->
-<button type="button" class="staff-chat-toggle" data-staff-chat-toggle aria-expanded="false" aria-controls="staff-chat-panel" aria-label="Czat pracowniczy" title="Czat pracowniczy">
-  <span class="dot" aria-hidden="true"></span>
-</button>
-<div class="staff-chat-panel" id="staff-chat-panel" data-staff-chat-panel role="dialog" aria-label="Czat wewnętrzny biura">
-  <div class="staff-chat__head">
-    <strong>Czat wewnętrzny — Biuro PTLGK</strong>
-    <span>Widoczny tylko dla zalogowanych pracowników</span>
-  </div>
-  <div class="staff-chat__log" data-staff-chat-log></div>
-  <form class="staff-chat__form" data-staff-chat-form>
-    <input type="text" data-staff-chat-input placeholder="Napisz wiadomość…" autocomplete="off">
-    <button type="submit">Wyślij</button>
-  </form>
-  <p class="staff-chat__notice">Wersja demonstracyjna — wiadomości nie są nigdzie wysyłane, znikają po zamknięciu karty.</p>
 </div>
 
 <script src="assets/js/main.js"></script>

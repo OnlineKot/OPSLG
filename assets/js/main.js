@@ -51,18 +51,22 @@
     }
   }
 
-  // Wewnętrzny czat dla pracowników biura — ukryta zakładka przy dolnej
-  // krawędzi strony. To wyłącznie makieta front-endowa do celów
-  // demonstracyjnych: wiadomości trzymane są lokalnie w przeglądarce
-  // (sessionStorage) i nie są nigdzie wysyłane. Prawdziwy czat
-  // wymagałby backendu / zewnętrznej usługi (patrz README).
+  // Wewnętrzny czat dla pracowników biura — zwinięty panel w stopce,
+  // za fałszywym ekranem logowania. To wyłącznie makieta front-endowa
+  // do celów demonstracyjnych: logowanie akceptuje dowolne dane,
+  // a wiadomości trzymane są lokalnie w przeglądarce (sessionStorage)
+  // i nie są nigdzie wysyłane. Prawdziwy czat wymagałby backendu /
+  // zewnętrznej usługi (patrz README).
   var staffToggle = document.querySelector("[data-staff-chat-toggle]");
   var staffPanel = document.querySelector("[data-staff-chat-panel]");
   if (staffToggle && staffPanel) {
+    var staffLoginForm = staffPanel.querySelector("[data-staff-chat-login]");
+    var staffBody = staffPanel.querySelector("[data-staff-chat-body]");
     var staffLog = staffPanel.querySelector("[data-staff-chat-log]");
     var staffForm = staffPanel.querySelector("[data-staff-chat-form]");
     var staffInput = staffPanel.querySelector("[data-staff-chat-input]");
     var STAFF_KEY = "ptlgk_staff_chat_demo";
+    var STAFF_SESSION_KEY = "ptlgk_staff_chat_session";
 
     var seedMessages = [
       { author: "Biuro Zarządu", time: "09:12", text: "Dzień dobry! Przypominam o dzisiejszym spotkaniu Zarządu o 14:00." },
@@ -105,27 +109,52 @@
       staffLog.scrollTop = staffLog.scrollHeight;
     }
 
-    var messages = loadMessages();
-    renderMessages(messages);
+    function showLoggedInView() {
+      if (staffLoginForm) staffLoginForm.hidden = true;
+      if (staffBody) staffBody.hidden = false;
+      var messages = loadMessages();
+      renderMessages(messages);
+      if (staffInput) staffInput.focus();
+
+      if (staffForm && !staffForm.dataset.bound) {
+        staffForm.dataset.bound = "true";
+        staffForm.addEventListener("submit", function (event) {
+          event.preventDefault();
+          var text = (staffInput.value || "").trim();
+          if (!text) return;
+          var now = new Date();
+          var hh = String(now.getHours()).padStart(2, "0");
+          var mm = String(now.getMinutes()).padStart(2, "0");
+          messages.push({ author: "Ty", time: hh + ":" + mm, text: text });
+          saveMessages(messages);
+          renderMessages(messages);
+          staffInput.value = "";
+        });
+      }
+    }
+
+    var alreadyLoggedIn = false;
+    try {
+      alreadyLoggedIn = sessionStorage.getItem(STAFF_SESSION_KEY) === "1";
+    } catch (e) {
+      alreadyLoggedIn = false;
+    }
+    if (alreadyLoggedIn) showLoggedInView();
 
     staffToggle.addEventListener("click", function () {
       var isOpen = staffPanel.classList.toggle("is-open");
       staffToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-      if (isOpen && staffInput) staffInput.focus();
     });
 
-    if (staffForm) {
-      staffForm.addEventListener("submit", function (event) {
+    if (staffLoginForm) {
+      staffLoginForm.addEventListener("submit", function (event) {
         event.preventDefault();
-        var text = (staffInput.value || "").trim();
-        if (!text) return;
-        var now = new Date();
-        var hh = String(now.getHours()).padStart(2, "0");
-        var mm = String(now.getMinutes()).padStart(2, "0");
-        messages.push({ author: "Ty", time: hh + ":" + mm, text: text });
-        saveMessages(messages);
-        renderMessages(messages);
-        staffInput.value = "";
+        try {
+          sessionStorage.setItem(STAFF_SESSION_KEY, "1");
+        } catch (e) {
+          /* sessionStorage niedostępny — logowanie nie zostanie zapamiętane */
+        }
+        showLoggedInView();
       });
     }
   }
