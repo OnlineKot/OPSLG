@@ -22,8 +22,8 @@
   --color-text: #3a3f3a;
   --color-text-muted: #616a61;
   --color-text-inverse: #eef1ee;
-  --font-heading: "Trebuchet MS", "Segoe UI", Verdana, sans-serif;
-  --font-body: "Segoe UI", Arial, Helvetica, sans-serif;
+  --font-heading: "Source Serif 4", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", "Segoe UI", Arial, Helvetica, sans-serif;
   --radius: 2px;
   --shadow-sm: 0 1px 3px rgba(30, 40, 30, 0.08);
   --shadow-md: 0 6px 20px rgba(30, 40, 30, 0.12);
@@ -280,6 +280,41 @@ p { margin: 0 0 16px; color: var(--color-text); }
   gap: 12px;
 }
 
+/* "Wizytówka" — business-card style CTA used for the header join link */
+.btn--card {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  background: #ffffff;
+  color: var(--color-navy);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 3px;
+  padding: 8px 18px;
+  font-weight: 400;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.btn--card:hover {
+  text-decoration: none;
+  box-shadow: var(--shadow-md);
+  border-left-color: var(--color-accent-dark);
+}
+.btn--card .btn--card__label {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--color-navy);
+  letter-spacing: 0.01em;
+}
+.btn--card .btn--card__sub {
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
 /* ---------------- Buttons ---------------- */
 .btn {
   display: inline-block;
@@ -467,6 +502,62 @@ p { margin: 0 0 16px; color: var(--color-text); }
   color: var(--color-accent);
   font-family: var(--font-heading);
 }
+
+/* Interaktywne kafelki treści — <details> stylizowane jako karty,
+   klikalne, z ikoną i tytułem widocznym od razu, rozwijające pełną
+   treść po kliknięciu (zamiast długiej ściany tekstu). */
+.tile-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 0;
+  overflow: hidden;
+  height: fit-content;
+}
+.tile-card summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--color-navy);
+}
+.tile-card summary::-webkit-details-marker { display: none; }
+.tile-card summary::after {
+  content: "+";
+  margin-left: auto;
+  font-size: 1.3rem;
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  flex-shrink: 0;
+}
+.tile-card[open] summary::after { content: "−"; }
+.tile-card summary:hover { color: var(--color-blue); }
+.tile-card .tile-card__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--color-bg-navy-tint);
+  color: var(--color-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.tile-card__body {
+  padding: 0 28px 24px 84px;
+  color: var(--color-text);
+}
+.tile-card__body p { margin: 0 0 14px; }
+.tile-card__body p:last-child { margin-bottom: 0; }
 
 /* Numbered steps for membership */
 .steps { counter-reset: step; }
