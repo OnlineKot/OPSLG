@@ -416,32 +416,6 @@ p { margin: 0 0 16px; color: var(--color-text); }
   max-width: fit-content;
 }
 
-/* Pasek zakładek na dole hero, na wzór belki "Komunikaty Zarządu"
-   z serwisów towarzystw naukowych. */
-.hero__tabs {
-  background: rgba(10, 20, 38, 0.45);
-  border-top: 1px solid rgba(255,255,255,0.18);
-}
-.hero__tabs ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 4px;
-  margin: 0;
-  padding: 0;
-  flex-wrap: wrap;
-}
-.hero__tabs a {
-  display: block;
-  color: #fff;
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 16px 20px;
-  border-right: 1px solid rgba(255,255,255,0.15);
-}
-.hero__tabs li:last-child a { border-right: none; }
-.hero__tabs a:hover { background: rgba(255,255,255,0.1); text-decoration: none; }
-
 /* ---------------- Trust strip ---------------- */
 .trust-strip {
   background: var(--color-bg-navy-tint);
