@@ -24,7 +24,7 @@
   --color-text-inverse: #eef1ee;
   --font-heading: "Source Serif 4", "Iowan Old Style", Georgia, "Times New Roman", serif;
   --font-body: "Inter", "Segoe UI", Arial, Helvetica, sans-serif;
-  --radius: 2px;
+  --radius: 4px;
   --shadow-sm: 0 1px 3px rgba(30, 40, 30, 0.08);
   --shadow-md: 0 6px 20px rgba(30, 40, 30, 0.12);
   --max-width: 1180px;
@@ -336,9 +336,10 @@ p { margin: 0 0 16px; color: var(--color-text); }
   border-radius: var(--radius);
   font-weight: 700;
   font-size: 0.95rem;
+  letter-spacing: 0.01em;
   border: 2px solid transparent;
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
 .btn:hover { text-decoration: none; }
 
@@ -347,7 +348,7 @@ p { margin: 0 0 16px; color: var(--color-text); }
   color: #ffffff;
   border-color: var(--color-accent);
 }
-.btn--primary:hover { background: var(--color-accent-dark); border-color: var(--color-accent-dark); }
+.btn--primary:hover { background: var(--color-accent-dark); border-color: var(--color-accent-dark); box-shadow: var(--shadow-sm); }
 
 .btn--outline {
   background: transparent;
@@ -382,18 +383,23 @@ p { margin: 0 0 16px; color: var(--color-text); }
 
 /* ---------------- Hero ---------------- */
 .hero {
-  background:
-    linear-gradient(120deg, rgba(28,59,107,0.88), rgba(79,143,82,0.55)),
-    repeating-linear-gradient(135deg, rgba(255,255,255,0.04) 0 2px, transparent 2px 40px);
+  background: linear-gradient(160deg, var(--color-navy) 0%, #16305a 55%, #123057 100%);
   color: #fff;
-  padding: 88px 0 0;
+  padding: 96px 0 0;
 }
 .hero .container--wide {
   padding-bottom: 64px;
 }
-.hero h1 { color: #fff; max-width: 780px; margin-left: auto; margin-right: auto; text-align: center; }
-.hero p { color: #eaf1ea; max-width: 640px; margin-left: auto; margin-right: auto; text-align: center; }
-.hero__actions { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 28px; justify-content: center; }
+.hero h1 {
+  color: #fff;
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-weight: 600;
+}
+.hero p { color: #dbe4ee; max-width: 640px; margin-left: auto; margin-right: auto; text-align: center; }
+.hero__actions { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 32px; justify-content: center; }
 
 .hero__badge {
   display: flex;
@@ -413,7 +419,7 @@ p { margin: 0 0 16px; color: var(--color-text); }
 /* Pasek zakładek na dole hero, na wzór belki "Komunikaty Zarządu"
    z serwisów towarzystw naukowych. */
 .hero__tabs {
-  background: rgba(20, 34, 26, 0.55);
+  background: rgba(10, 20, 38, 0.45);
   border-top: 1px solid rgba(255,255,255,0.18);
 }
 .hero__tabs ul {
@@ -528,7 +534,9 @@ p { margin: 0 0 16px; color: var(--color-text); }
   padding: 0;
   overflow: hidden;
   height: fit-content;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
 }
+.tile-card:hover { box-shadow: var(--shadow-md); border-color: var(--color-accent-light); }
 .tile-card summary {
   cursor: pointer;
   list-style: none;
