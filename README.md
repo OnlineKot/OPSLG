@@ -72,6 +72,12 @@ danymi z `ADMIN_EMAIL` / `ADMIN_PASSWORD` z pliku `.env`.
 8. Skonfiguruj domenę w ustawieniach Vercel i (jeśli trzeba) przekieruj starą
    domenę z GitHub Pages.
 
+> **Uwaga przy hostingu z własnym procesem (Railway/Render/Fly.io, nie Vercel):**
+> po każdym `next build` trzeba **zrestartować** proces `next start`, żeby
+> serwer zaczął serwować nowe pliki `.next/static`. Sam rebuild bez restartu
+> zostawia stary proces wskazujący na nieaktualne assety — strona załaduje się
+> bez stylów. Na Vercel to nieistotne (każde wdrożenie to świeży proces).
+
 ## Co jest edytowalne z panelu `/admin`, a co nie
 
 **Edytowalne przez administratora (bez ruszania kodu):**
