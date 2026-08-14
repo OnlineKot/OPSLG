@@ -9,8 +9,8 @@ export default async function AdminAktualnosciPage({ searchParams }: { searchPar
   return (
     <div>
       <p className="breadcrumb"><Link href="/admin">Panel</Link> / Aktualności</p>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
-        <h1 style={{ margin: 0 }}>Aktualności</h1>
+      <div className="admin-page-head">
+        <h1>Aktualności</h1>
         <Link href="/admin/aktualnosci/new" className="btn btn--primary btn--sm">+ Dodaj wpis</Link>
       </div>
       {searchParams.saved && <div className="admin-alert admin-alert--success" style={{ marginTop: 20 }}>Zapisano zmiany.</div>}

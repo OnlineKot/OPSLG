@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getIntro, getItems } from "@/lib/content";
+import { RichTextEditorField } from "@/components/admin/RichTextEditorField";
 import { updateBenefitItem, updateMembershipIntro } from "../actions";
 
 export const metadata = { title: "Członkostwo — Panel PTLGK" };
@@ -10,7 +11,9 @@ export default async function AdminCzlonkostwoPage({ searchParams }: { searchPar
   return (
     <div>
       <p className="breadcrumb"><Link href="/admin">Panel</Link> / Członkostwo</p>
-      <h1>Członkostwo</h1>
+      <div className="admin-page-head">
+        <h1>Członkostwo</h1>
+      </div>
       {searchParams.saved && <div className="admin-alert admin-alert--success">Zapisano zmiany.</div>}
 
       <div className="admin-form-card">
@@ -25,10 +28,7 @@ export default async function AdminCzlonkostwoPage({ searchParams }: { searchPar
             <label htmlFor="lede">Kto może zostać członkiem (akapit pod H1)</label>
             <textarea id="lede" name="lede" defaultValue={intro?.lede ?? ""} rows={3} />
           </div>
-          <div>
-            <label htmlFor="body">„Jak zostać członkiem?” — osobne akapity oddziel pustą linią</label>
-            <textarea id="body" name="body" defaultValue={intro?.body ?? ""} rows={6} />
-          </div>
+          <RichTextEditorField id="body" name="body" label="„Jak zostać członkiem?”" defaultValue={intro?.body ?? ""} />
           <div>
             <label htmlFor="closing">Zdanie zamykające</label>
             <textarea id="closing" name="closing" defaultValue={intro?.closing ?? ""} rows={2} />

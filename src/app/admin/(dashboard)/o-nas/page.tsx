@@ -10,7 +10,9 @@ export default async function AdminONasPage({ searchParams }: { searchParams: { 
   return (
     <div>
       <p className="breadcrumb"><Link href="/admin">Panel</Link> / O nas</p>
-      <h1>O nas</h1>
+      <div className="admin-page-head">
+        <h1>O nas</h1>
+      </div>
       {searchParams.saved && <div className="admin-alert admin-alert--success">Zapisano zmiany.</div>}
 
       <div className="admin-form-card">

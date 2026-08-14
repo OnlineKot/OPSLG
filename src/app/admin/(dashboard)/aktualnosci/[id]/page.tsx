@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/db";
+import { RichTextEditorField } from "@/components/admin/RichTextEditorField";
 import { deleteNewsPost, updateNewsPost } from "../../actions";
 
 export const metadata = { title: "Edytuj wpis — Panel PTLGK" };
@@ -18,7 +19,9 @@ export default async function AdminNewsEditPage({ params }: { params: { id: stri
   return (
     <div>
       <p className="breadcrumb"><Link href="/admin">Panel</Link> / <Link href="/admin/aktualnosci">Aktualności</Link> / {post.title}</p>
-      <h1>Edytuj wpis</h1>
+      <div className="admin-page-head">
+        <h1>Edytuj wpis</h1>
+      </div>
 
       <div className="admin-form-card">
         <form action={updateNewsPost} className="admin-form-card__stack">
@@ -35,10 +38,7 @@ export default async function AdminNewsEditPage({ params }: { params: { id: stri
             <label htmlFor="excerpt">Krótka zajawka (widoczna na stronie głównej)</label>
             <input type="text" id="excerpt" name="excerpt" defaultValue={post.excerpt ?? ""} />
           </div>
-          <div>
-            <label htmlFor="body">Treść — osobne akapity oddziel pustą linią</label>
-            <textarea id="body" name="body" defaultValue={post.body} rows={10} required />
-          </div>
+          <RichTextEditorField id="body" name="body" label="Treść wpisu" defaultValue={post.body} />
           <div className="consent-row">
             <input type="checkbox" id="published" name="published" defaultChecked={post.published} />
             <label htmlFor="published" style={{ display: "inline", marginBottom: 0 }}>Opublikowany (widoczny na stronie)</label>

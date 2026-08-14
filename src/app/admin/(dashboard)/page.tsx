@@ -15,7 +15,9 @@ const SECTIONS = [
 export default function AdminDashboardPage() {
   return (
     <div>
-      <h1>Panel PTLGK</h1>
+      <div className="admin-page-head">
+        <h1>Pulpit</h1>
+      </div>
       <p className="small">Wybierz sekcję, którą chcesz edytować. Zmiany są widoczne na stronie od razu po zapisaniu.</p>
       <div className="admin-grid">
         {SECTIONS.map((section) => (

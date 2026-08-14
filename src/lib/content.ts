@@ -19,14 +19,3 @@ export function getPublishedNews(limit?: number) {
     take: limit,
   });
 }
-
-// Dzieli wolny tekst na akapity po pustej linii — używane dla pól
-// PageIntro.body edytowanych w panelu jako zwykły tekst (bez HTML,
-// więc bez ryzyka XSS przy renderowaniu).
-export function toParagraphs(text: string | null | undefined): string[] {
-  if (!text) return [];
-  return text
-    .split(/\n\s*\n/)
-    .map((p) => p.trim())
-    .filter(Boolean);
-}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getPublishedNews } from "@/lib/content";
+import { RichText } from "@/components/RichText";
 
 export const revalidate = 30;
 
@@ -38,9 +39,7 @@ export default async function AktualnosciPage() {
                     </time>
                   </p>
                 )}
-                {item.body.split(/\n\s*\n/).map((paragraph, pIndex) => (
-                  <p key={pIndex}>{paragraph.trim()}</p>
-                ))}
+                <RichText value={item.body} />
                 <p><Link href={`/aktualnosci/${item.slug}`}>Stały link do wpisu →</Link></p>
               </div>
             </details>

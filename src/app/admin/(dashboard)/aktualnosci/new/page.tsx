@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { RichTextEditorField } from "@/components/admin/RichTextEditorField";
 import { createNewsPost } from "../../actions";
 
 export const metadata = { title: "Nowy wpis — Panel PTLGK" };
@@ -7,7 +8,9 @@ export default function AdminNewsNewPage() {
   return (
     <div>
       <p className="breadcrumb"><Link href="/admin">Panel</Link> / <Link href="/admin/aktualnosci">Aktualności</Link> / Nowy wpis</p>
-      <h1>Nowy wpis</h1>
+      <div className="admin-page-head">
+        <h1>Nowy wpis</h1>
+      </div>
 
       <div className="admin-form-card">
         <form action={createNewsPost} className="admin-form-card__stack">
@@ -23,10 +26,7 @@ export default function AdminNewsNewPage() {
             <label htmlFor="excerpt">Krótki zajawka (widoczna na stronie głównej)</label>
             <input type="text" id="excerpt" name="excerpt" />
           </div>
-          <div>
-            <label htmlFor="body">Treść — osobne akapity oddziel pustą linią</label>
-            <textarea id="body" name="body" rows={10} required />
-          </div>
+          <RichTextEditorField id="body" name="body" label="Treść wpisu" defaultValue="" />
           <div className="consent-row">
             <input type="checkbox" id="published" name="published" defaultChecked />
             <label htmlFor="published" style={{ display: "inline", marginBottom: 0 }}>Opublikowany (widoczny na stronie)</label>

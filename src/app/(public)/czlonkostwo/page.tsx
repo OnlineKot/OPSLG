@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getIntro, getItems, toParagraphs } from "@/lib/content";
+import { getIntro, getItems } from "@/lib/content";
+import { RichText } from "@/components/RichText";
 
 export const revalidate = 60;
 
@@ -14,7 +15,6 @@ export default async function CzlonkostwoPage() {
     getIntro("czlonkostwo"),
     getItems("czlonkostwo-benefits"),
   ]);
-  const howToParagraphs = toParagraphs(intro?.body);
 
   return (
     <section className="section" style={{ paddingTop: 56 }}>
@@ -43,11 +43,11 @@ export default async function CzlonkostwoPage() {
           </>
         )}
 
-        {howToParagraphs.length > 0 && (
+        {intro?.body && (
           <details className="tile-card" open style={{ maxWidth: 820 }}>
             <summary><span className="tile-card__icon">?</span> Jak zostać członkiem?</summary>
             <div className="tile-card__body">
-              {howToParagraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+              <RichText value={intro.body} />
             </div>
           </details>
         )}

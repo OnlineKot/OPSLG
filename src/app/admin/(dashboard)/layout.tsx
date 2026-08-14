@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { redirect } from "next/navigation";
 import { clearSession, requireAdmin } from "@/lib/auth";
+import { AdminSidebarNav } from "@/components/admin/AdminSidebarNav";
 
 async function logoutAction() {
   "use server";
@@ -13,20 +13,21 @@ export default async function AdminDashboardLayout({ children }: { children: Rea
 
   return (
     <div className="admin-shell">
-      <div className="admin-topbar">
-        <div className="container admin-topbar__actions">
-          <Link href="/admin" className="admin-topbar__brand">Panel PTLGK</Link>
-          <div className="admin-topbar__actions">
-            <span className="admin-topbar__user">{admin.email}</span>
-            <Link href="/" target="_blank">Zobacz stronę ↗</Link>
-            <form action={logoutAction}>
-              <button type="submit" className="btn btn--outline-light btn--sm">Wyloguj</button>
-            </form>
-          </div>
+      <aside className="admin-sidebar">
+        <a href="/admin" className="admin-sidebar__brand">Panel PTLGK</a>
+        <AdminSidebarNav />
+        <div className="admin-sidebar__footer">
+          <div className="admin-sidebar__user">{admin.email}</div>
+          <a href="/" target="_blank" className="admin-nav-link">Zobacz stronę ↗</a>
+          <form action={logoutAction}>
+            <button type="submit" className="admin-nav-link" style={{ width: "100%", textAlign: "left", background: "none", border: "none", cursor: "pointer", font: "inherit" }}>
+              Wyloguj
+            </button>
+          </form>
         </div>
-      </div>
-      <div className="admin-main">
-        <div className="container">{children}</div>
+      </aside>
+      <div className="admin-content">
+        <div className="admin-content-inner">{children}</div>
       </div>
     </div>
   );

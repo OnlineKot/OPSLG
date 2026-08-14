@@ -10,7 +10,9 @@ export default async function AdminWspolpracaPage({ searchParams }: { searchPara
   return (
     <div>
       <p className="breadcrumb"><Link href="/admin">Panel</Link> / Współpraca</p>
-      <h1>Współpraca</h1>
+      <div className="admin-page-head">
+        <h1>Współpraca</h1>
+      </div>
       {searchParams.saved && <div className="admin-alert admin-alert--success">Zapisano zmiany.</div>}
 
       <div className="admin-form-card">

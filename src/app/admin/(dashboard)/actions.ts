@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { requireAdmin } from "@/lib/auth";
+import { sanitizeRichText } from "@/lib/sanitize";
 
 function str(formData: FormData, key: string): string {
   return String(formData.get(key) ?? "").trim();
@@ -15,7 +16,8 @@ function optionalStr(formData: FormData, key: string): string | null {
 
 async function saveIntro(
   formData: FormData,
-  fields: Array<"eyebrow" | "title" | "lede" | "body" | "closing">
+  fields: Array<"eyebrow" | "title" | "lede" | "body" | "closing">,
+  richFields: Array<"body"> = []
 ) {
   await requireAdmin();
   const pageKey = str(formData, "pageKey");
@@ -23,7 +25,14 @@ async function saveIntro(
 
   const data: Record<string, string | null> = {};
   for (const field of fields) {
-    data[field] = field === "title" ? str(formData, field) : optionalStr(formData, field);
+    if (field === "title") {
+      data[field] = str(formData, field);
+    } else if ((richFields as string[]).includes(field)) {
+      const raw = str(formData, field);
+      data[field] = raw ? sanitizeRichText(raw) : null;
+    } else {
+      data[field] = optionalStr(formData, field);
+    }
   }
 
   await prisma.pageIntro.upsert({
@@ -75,7 +84,7 @@ export async function updateHomeActivityItem(formData: FormData) {
 
 // --- Członkostwo ---
 export async function updateMembershipIntro(formData: FormData) {
-  await saveIntro(formData, ["eyebrow", "title", "lede", "body", "closing"]);
+  await saveIntro(formData, ["eyebrow", "title", "lede", "body", "closing"], ["body"]);
   revalidatePath("/czlonkostwo");
   revalidatePath("/");
   redirect("/admin/czlonkostwo?saved=1");
@@ -145,7 +154,7 @@ export async function createNewsPost(formData: FormData) {
   await requireAdmin();
   const title = str(formData, "title");
   const excerpt = optionalStr(formData, "excerpt");
-  const body = str(formData, "body");
+  const body = sanitizeRichText(str(formData, "body"));
   const eventDateRaw = str(formData, "eventDate");
   const published = formData.get("published") === "on";
   if (!title || !body) throw new Error("Tytuł i treść są wymagane.");
@@ -178,7 +187,7 @@ export async function updateNewsPost(formData: FormData) {
   const id = str(formData, "id");
   const title = str(formData, "title");
   const excerpt = optionalStr(formData, "excerpt");
-  const body = str(formData, "body");
+  const body = sanitizeRichText(str(formData, "body"));
   const eventDateRaw = str(formData, "eventDate");
   const published = formData.get("published") === "on";
   if (!id || !title || !body) throw new Error("Brak wymaganych danych.");

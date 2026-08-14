@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/db";
+import { RichText } from "@/components/RichText";
 
 export const revalidate = 30;
 
@@ -37,11 +38,7 @@ export default async function NewsDetailPage({ params }: { params: { slug: strin
           )}
         </div>
 
-        <div style={{ maxWidth: 820 }}>
-          {post.body.split(/\n\s*\n/).map((paragraph, index) => (
-            <p key={index}>{paragraph.trim()}</p>
-          ))}
-        </div>
+        <RichText value={post.body} className="rich-text-820" />
       </div>
     </section>
   );
