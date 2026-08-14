@@ -1,0 +1,73 @@
+// Schemat bazy danych PTLGK — treść zarządzana z panelu /admin.
+//
+// Provider dev: SQLite (zero-config, plik prisma/dev.db).
+// Produkcja przy większym ruchu: zmień "provider" na "postgresql"
+// i ustaw DATABASE_URL na hostowaną bazę (np. Neon, Supabase, Railway),
+// a następnie uruchom `npx prisma migrate deploy`. Więcej w README.md.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
+
+// Nagłówki / lead / tekst zamykający dla pojedynczych, "singletonowych"
+// sekcji stron (jedna sekcja = jeden wiersz, kluczowany przez pageKey).
+model PageIntro {
+  id        String   @id @default(cuid())
+  pageKey   String   @unique
+  eyebrow   String?
+  title     String
+  lede      String?
+  body      String?
+  closing   String?
+  updatedAt DateTime @updatedAt
+}
+
+// Uporządkowane listy pozycji używane w wielu miejscach (grupowane przez
+// pageKey): kafelki "Kim jesteśmy", filary "Działalność", organy
+// "Struktura", korzyści członkostwa, fakty na stronie głównej.
+model ContentItem {
+  id        String   @id @default(cuid())
+  pageKey   String
+  order     Int      @default(0)
+  title     String
+  body      String
+  updatedAt DateTime @updatedAt
+
+  @@index([pageKey])
+}
+
+// Aktualności — pełne CRUD (lista, tworzenie, edycja, usuwanie, publikacja).
+model NewsPost {
+  id        String    @id @default(cuid())
+  slug      String    @unique
+  title     String
+  excerpt   String?
+  body      String
+  eventDate DateTime?
+  published Boolean   @default(true)
+  order     Int       @default(0)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+// Dane kontaktowe — jeden wiersz (id = "singleton").
+model ContactInfo {
+  id          String   @id @default(cuid())
+  address     String
+  phone       String
+  email       String
+  officeHours String
+  updatedAt   DateTime @updatedAt
+}
