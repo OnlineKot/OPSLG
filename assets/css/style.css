@@ -124,6 +124,58 @@ p { margin: 0 0 16px; color: var(--color-text); }
   border-color: rgba(255,255,255,0.25);
 }
 
+/* ---------------- Editorial (dark) section ----------------
+   Ciemna, redakcyjna odmiana sekcji — bez ramek i cieni kart,
+   duże numery pozycji, cienkie linie działowe. Używana w otwarciu
+   strony głównej, żeby uniknąć efektu "szablonu AI" (boks-w-boksie). */
+.section--editorial {
+  background: var(--color-navy);
+  color: #dbe4ee;
+}
+.section--editorial .eyebrow { color: var(--color-accent-light); }
+.section--editorial h2 { color: #ffffff; font-weight: 600; }
+.section--editorial .section-header {
+  text-align: left;
+  margin: 0 0 40px;
+  max-width: 640px;
+}
+.section--editorial .section-header p { color: #b6c3d6; }
+
+.numbered-list { border-top: 1px solid rgba(255,255,255,0.15); }
+.numbered-item {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 24px;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.numbered-item__num {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--color-accent-light);
+}
+.numbered-item h3 { color: #ffffff; margin-bottom: 8px; font-weight: 600; }
+.numbered-item p { color: #b6c3d6; margin: 0; max-width: 640px; }
+
+/* Wiersz suchych faktów na ciemnym tle — bez ramek/cieni, oddzielony
+   cienkimi pionowymi liniami zamiast pudełek. */
+.fact-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.fact-row__item {
+  flex: 1 1 220px;
+  padding: 20px 28px;
+  border-left: 1px solid rgba(255,255,255,0.15);
+}
+.fact-row__item:first-child { border-left: none; }
+.fact-row__item strong { color: #ffffff; }
+.fact-row__item span { color: #b6c3d6; }
+
 .eyebrow {
   display: inline-block;
   text-transform: uppercase;
@@ -1094,6 +1146,9 @@ textarea { resize: vertical; min-height: 120px; }
   .form-grid { grid-template-columns: 1fr; }
   .news-item { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
+  .numbered-item { grid-template-columns: 1fr; gap: 8px; }
+  .fact-row__item { border-left: none; border-top: 1px solid rgba(255,255,255,0.15); }
+  .fact-row__item:first-child { border-top: none; }
   .topbar .container { justify-content: center; text-align: center; }
   .header-cta .btn--outline { display: none; }
 }
