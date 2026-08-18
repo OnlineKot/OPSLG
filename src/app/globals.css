@@ -1155,6 +1155,33 @@ textarea { resize: vertical; min-height: 120px; }
   .fact-row__item:first-child { border-top: none; }
   .topbar .container { justify-content: center; text-align: center; }
   .header-cta .btn--outline { display: none; }
+
+  /* Panel administracyjny — sidebar zwija się w poziomy pasek na górze */
+  .admin-shell { flex-direction: column; }
+  .admin-sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+    padding: 12px;
+  }
+  .admin-sidebar__brand { padding: 4px 8px; margin-right: auto; }
+  .admin-sidebar nav { flex-direction: row !important; flex-wrap: wrap; gap: 4px !important; }
+  .admin-nav-link { padding: 6px 10px; font-size: 0.82rem; }
+  .admin-sidebar__footer {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .admin-sidebar__user { display: none; }
+  .admin-content-inner { padding: 24px 16px 60px; }
+  .admin-grid { grid-template-columns: 1fr; }
 }
 
 .main-nav.is-open {
