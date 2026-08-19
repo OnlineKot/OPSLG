@@ -46,7 +46,6 @@ export default function DlaPacjentowPage() {
           </div>
         </div>
 
-        <div className="dot-divider" style={{ marginBottom: '40px' }}><span>•</span><span>•</span><span>•</span></div>
 
         <div className="grid grid--2">
           <div className="card">

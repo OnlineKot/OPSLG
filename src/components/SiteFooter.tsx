@@ -48,11 +48,9 @@ export function SiteFooter() {
           <div className="footer-legal__links">
             <Link href="/mapa-strony">Mapa strony</Link>
             <Link href="/kontakt">Kontakt</Link>
+            <a href="#tresc-glowna" className="footer-totop-link">Do góry ↑</a>
           </div>
         </div>
-      </div>
-      <div className="footer-totop">
-        <a href="#tresc-glowna"><span className="footer-totop__arrow" aria-hidden="true">↑</span>Przewiń w górę<br />Polskie Towarzystwo Lekarzy Genetyków Klinicznych</a>
       </div>
     </footer>
   );

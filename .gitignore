@@ -16,3 +16,6 @@ prisma/dev.db-journal
 # System
 .DS_Store
 tsconfig.tsbuildinfo
+
+# Zrzuty ekranu do przeglądu wizualnego (nie są częścią projektu)
+.review-screenshots/

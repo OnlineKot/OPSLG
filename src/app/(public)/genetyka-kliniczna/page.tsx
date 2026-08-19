@@ -34,7 +34,6 @@ export default function GenetykaKlinicznaPage() {
             </div>
           </div>
 
-          <div className="dot-divider" style={{ marginBottom: '40px' }}><span>•</span><span>•</span><span>•</span></div>
 
           <div className="section-header">
             <h2>Zawód genetyka klinicznego</h2>

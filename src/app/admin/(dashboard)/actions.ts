@@ -70,13 +70,8 @@ export async function updateAboutItem(formData: FormData) {
   redirect("/admin/o-nas?saved=1");
 }
 
-// --- Strona główna: "Kim jesteśmy" / "Działalność" (osobne pageKeye) ---
+// --- Strona główna: sekcja "Kim jesteśmy" ---
 export async function updateHomeAboutItem(formData: FormData) {
-  await saveItem(formData);
-  revalidatePath("/");
-  redirect("/admin/hero?saved=1");
-}
-export async function updateHomeActivityItem(formData: FormData) {
   await saveItem(formData);
   revalidatePath("/");
   redirect("/admin/hero?saved=1");

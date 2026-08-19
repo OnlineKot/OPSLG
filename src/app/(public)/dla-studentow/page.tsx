@@ -43,7 +43,6 @@ export default function DlaStudentowPage() {
             </div>
           </div>
 
-          <div className="dot-divider" style={{ margin: '40px 0' }}><span>•</span><span>•</span><span>•</span></div>
 
           <div className="card">
             <h3>Dla studentów</h3>

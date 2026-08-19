@@ -36,7 +36,6 @@ export default function DlaLekarzyKierujacychPage() {
             </div>
           </div>
 
-          <div className="dot-divider" style={{ marginBottom: '40px' }}><span>•</span><span>•</span><span>•</span></div>
 
           <div className="card">
             <h3>Współpraca</h3>
