@@ -77,19 +77,20 @@ export default async function HomePage() {
               <h2>Aktualności</h2>
             </div>
             <div className="announcement-list">
-              {news.map((item) => (
-                <p className="announcement announcement--wydarzenie" key={item.id}>
-                  {item.eventDate && (
-                    <time dateTime={item.eventDate.toISOString()}>
-                      {item.eventDate.toLocaleDateString("pl-PL", { day: "2-digit", month: "long", year: "numeric" })}
+              {news.map((item) => {
+                const date = item.eventDate ?? item.createdAt;
+                return (
+                  <p className="announcement announcement--wydarzenie" key={item.id}>
+                    <time dateTime={date.toISOString()}>
+                      {date.toLocaleDateString("pl-PL", { day: "2-digit", month: "long", year: "numeric" })}
                     </time>
-                  )}
-                  <Link href={`/aktualnosci/${item.slug}`}>{item.excerpt ?? item.title}</Link>
-                </p>
-              ))}
+                    <Link href={`/aktualnosci/${item.slug}`}>{item.excerpt ?? item.title}</Link>
+                  </p>
+                );
+              })}
             </div>
-            <div className="text-center" style={{ marginTop: 32 }}>
-              <Link href="/aktualnosci" className="btn btn--doc">Zobacz więcej aktualności</Link>
+            <div style={{ marginTop: 32 }}>
+              <Link href="/aktualnosci" className="btn btn--outline">Zobacz więcej aktualności</Link>
             </div>
           </div>
         </section>
@@ -121,16 +122,19 @@ export default async function HomePage() {
               <p>Napisz do nas, aby otrzymać deklarację członkowską — elektronicznie lub na spotkaniu inauguracyjnym.</p>
             </div>
           </div>
-          <p className="text-center" style={{ marginTop: 32 }}>
+          <p style={{ marginTop: 32 }}>
             <Link href="/czlonkostwo">Pełne zasady członkostwa →</Link>
           </p>
         </div>
       </section>
 
-      <section className="section section--navy" style={{ textAlign: "center", padding: "56px 0" }}>
-        <div className="container">
-          <h2 style={{ color: "#fff", marginBottom: 24 }}>Gotowy, żeby dołączyć?</h2>
-          <Link href="/dolacz" className="btn btn--primary">Wypełnij deklarację członkowską</Link>
+      <section className="section section--navy cta-band">
+        <div className="container cta-band__inner">
+          <div>
+            <h2>Gotowy, żeby dołączyć?</h2>
+            <p style={{ margin: 0 }}>Wypełnij deklarację i dołącz do środowiska genetyków klinicznych.</p>
+          </div>
+          <Link href="/dolacz" className="btn btn--primary">Wypełnij deklarację</Link>
         </div>
       </section>
     </>

@@ -3,30 +3,34 @@
    ========================================================================== */
 
 :root {
-  /* Stonowana, "towarzystwowa" paleta inspirowana stronami polskich
-     towarzystw naukowo-lekarskich: zieleń jako kolor przewodni,
-     granat i czerwień jako akcenty rangi/pilności komunikatów. */
-  --color-navy: #1c3b6b;
-  --color-navy-dark: #33373a;
-  --color-blue: #1c3b6b;
-  --color-blue-light: #2f5590;
-  --color-accent: #4f8f52;
-  --color-accent-dark: #3c7440;
-  --color-accent-light: #8fbb8f;
+  /* Współczesna paleta: głęboki atrament zamiast instytucjonalnego granatu,
+     jeden nasycony akcent (teal) zamiast "urzędowej" zieleni. Nazwy zmiennych
+     zostały historyczne (--color-navy itd.), żeby nie przepisywać całego
+     arkusza — liczą się wartości. */
+  --color-navy: #101418;
+  --color-navy-dark: #0a0d10;
+  --color-blue: #0f766e;
+  --color-blue-light: #14b8a6;
+  --color-accent: #0d9488;
+  --color-accent-dark: #0f766e;
+  --color-accent-light: #5eead4;
   --color-red: #c0392b;
   --color-orange: #d9822b;
   --color-bg: #ffffff;
-  --color-bg-alt: #f4f7f4;
-  --color-bg-navy-tint: #eef2ec;
-  --color-border: #e0e5df;
-  --color-text: #3a3f3a;
-  --color-text-muted: #616a61;
-  --color-text-inverse: #eef1ee;
-  --font-heading: "Source Serif 4", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --color-bg-alt: #f6f7f8;
+  --color-bg-navy-tint: #eef4f3;
+  --color-border: #e5e8ec;
+  --color-text: #23272e;
+  --color-text-muted: #5c6672;
+  --color-text-inverse: #eef1f3;
+  /* Jeden krój (Inter) w obu rolach — nagłówki różnią się wagą i ciasnym
+     trackingiem, nie szeryfami. Szeryfy + wyśrodkowanie to główny powód,
+     dla którego strona czytała się jak serwis instytucji z 2009 r. */
+  --font-heading: "Inter", "Segoe UI", Arial, Helvetica, sans-serif;
   --font-body: "Inter", "Segoe UI", Arial, Helvetica, sans-serif;
-  --radius: 4px;
-  --shadow-sm: 0 1px 3px rgba(30, 40, 30, 0.08);
-  --shadow-md: 0 6px 20px rgba(30, 40, 30, 0.12);
+  --radius: 10px;
+  --shadow-sm: 0 1px 2px rgba(16, 20, 24, 0.04), 0 2px 8px rgba(16, 20, 24, 0.04);
+  --shadow-md: 0 8px 30px rgba(16, 20, 24, 0.10);
   --max-width: 1180px;
 }
 
@@ -63,23 +67,27 @@ h1, h2, h3, h4 {
   font-family: var(--font-heading);
   font-weight: 700;
   color: var(--color-navy);
-  line-height: 1.25;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
   margin: 0 0 16px;
+  text-wrap: balance;
 }
 
-h1 { font-size: clamp(2rem, 4vw, 2.75rem); }
-h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
-h3 { font-size: 1.25rem; }
+h1 { font-size: clamp(2.4rem, 5.5vw, 3.75rem); letter-spacing: -0.035em; line-height: 1.05; }
+h2 { font-size: clamp(1.75rem, 3.4vw, 2.4rem); letter-spacing: -0.028em; }
+h3 { font-size: 1.15rem; letter-spacing: -0.015em; }
 
 p { margin: 0 0 16px; color: var(--color-text); }
 
 .lede {
   font-size: 1.15rem;
+  line-height: 1.6;
   color: var(--color-text-muted);
+  text-wrap: pretty;
 }
 
 .section {
-  padding: 96px 0;
+  padding: 80px 0;
 }
 
 .section--alt { background: var(--color-bg-alt); }
@@ -90,34 +98,21 @@ p { margin: 0 0 16px; color: var(--color-text); }
 .section--navy h2, .section--navy h3 { color: #ffffff; }
 .section--navy p { color: #cfd9e4; }
 
+/* Nagłówki sekcji są wyrównane DO LEWEJ — wyśrodkowany blok "eyebrow +
+   szeryfowy tytuł + kreska pod spodem" to najbardziej rozpoznawalny
+   marker stron sprzed dekady. */
 .section-header {
   max-width: 720px;
-  margin: 0 auto 48px;
-  text-align: center;
+  margin: 0 0 48px;
+  text-align: left;
 }
-/* Krótka, kolorowa kreska pod nagłówkiem zamiast pełnej linii z "daszkiem" —
-   ten sam pomysł (akcent pod H2), bez efektu papierowego certyfikatu. */
 .section-header h2 {
-  position: relative;
   color: var(--color-navy);
-  font-weight: 600;
-  padding-bottom: 20px;
-  margin-bottom: 22px;
-}
-.section-header h2::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 48px;
-  height: 3px;
-  background: var(--color-accent);
-  transform: translateX(-50%);
-  border-radius: 999px;
+  font-weight: 700;
+  margin-bottom: 16px;
 }
 .section--navy .section-header h2,
 .section--editorial .section-header h2 { color: #ffffff; }
-.section--editorial .section-header h2::after { display: none; }
 
 /* ---------------- Editorial (dark) section ----------------
    Ciemna, redakcyjna odmiana sekcji — bez ramek i cieni kart,
@@ -182,12 +177,26 @@ p { margin: 0 0 16px; color: var(--color-text); }
 .eyebrow {
   display: inline-block;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--color-accent);
-  margin-bottom: 10px;
+  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--color-accent-dark);
+  margin-bottom: 14px;
 }
+
+/* Pasek CTA — treść po lewej, przycisk po prawej (zamiast wyśrodkowanej
+   kolumny na środku pustej sekcji). */
+.cta-band { padding: 64px 0; }
+.cta-band__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.cta-band h2 { margin-bottom: 8px; }
+.cta-band .btn--primary { background: #fff; color: var(--color-navy); border-color: #fff; }
+.cta-band .btn--primary:hover { background: var(--color-accent-light); border-color: var(--color-accent-light); color: var(--color-navy); }
 
 
 /* Skip link for accessibility */
@@ -207,7 +216,9 @@ p { margin: 0 0 16px; color: var(--color-text); }
 
 /* ---------------- Header / nav ---------------- */
 .site-header {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
   border-bottom: 1px solid var(--color-border);
   position: sticky;
   top: 0;
@@ -232,19 +243,19 @@ p { margin: 0 0 16px; color: var(--color-text); }
 }
 .brand:hover { text-decoration: none; }
 .brand__mark {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: #fff;
-  border: 2px solid var(--color-accent);
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--color-navy);
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-navy);
+  color: #fff;
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 0.68rem;
-  letter-spacing: -0.03em;
+  font-size: 0.66rem;
+  letter-spacing: -0.02em;
   flex-shrink: 0;
 }
 .brand__text { line-height: 1.2; min-width: 0; }
@@ -252,12 +263,13 @@ p { margin: 0 0 16px; color: var(--color-text); }
   display: block;
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 0.94rem;
+  letter-spacing: -0.02em;
   color: var(--color-navy);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 420px;
+  max-width: 480px;
 }
 .brand__sub {
   display: block;
@@ -356,17 +368,19 @@ p { margin: 0 0 16px; color: var(--color-text); }
 
 /* ---------------- Buttons ---------------- */
 .btn {
-  display: inline-block;
-  padding: 12px 24px;
-  border-radius: var(--radius);
-  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 26px;
+  border-radius: 999px;
+  font-weight: 600;
   font-size: 0.95rem;
-  letter-spacing: 0.01em;
-  border: 2px solid transparent;
+  letter-spacing: -0.01em;
+  border: 1px solid transparent;
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
 }
-.btn:hover { text-decoration: none; }
+.btn:hover { text-decoration: none; transform: translateY(-1px); }
 
 .btn--primary {
   background: var(--color-accent);
@@ -406,25 +420,36 @@ p { margin: 0 0 16px; color: var(--color-text); }
 }
 .btn--doc:hover { background: var(--color-accent-dark); text-decoration: none; }
 
-/* ---------------- Hero ---------------- */
+/* ---------------- Hero ----------------
+   Wyrównany do lewej, z subtelną poświatą akcentu zamiast płaskiego
+   granatowego prostokąta. */
 .hero {
-  background: linear-gradient(160deg, var(--color-navy) 0%, #16305a 55%, #123057 100%);
+  position: relative;
+  background: var(--color-navy);
   color: #fff;
-  padding: 96px 0 0;
+  padding: 120px 0 104px;
+  overflow: hidden;
 }
-.hero .container--wide {
-  padding-bottom: 64px;
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -30%;
+  right: -10%;
+  width: 55%;
+  height: 150%;
+  background: radial-gradient(closest-side, rgba(13, 148, 136, 0.28), transparent);
+  pointer-events: none;
 }
+.hero .container { position: relative; }
 .hero h1 {
   color: #fff;
-  max-width: 780px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  font-weight: 600;
+  max-width: 16ch;
+  font-weight: 700;
 }
-.hero p { color: #dbe4ee; max-width: 640px; margin-left: auto; margin-right: auto; text-align: center; }
-.hero__actions { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 32px; justify-content: center; }
+.hero p { color: #a8b3bf; max-width: 56ch; font-size: 1.15rem; }
+.hero__actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 36px; }
+.hero .btn--primary { background: #fff; color: var(--color-navy); border-color: #fff; }
+.hero .btn--primary:hover { background: var(--color-accent-light); border-color: var(--color-accent-light); color: var(--color-navy); }
 
 .hero__badge {
   display: flex;
@@ -476,9 +501,9 @@ p { margin: 0 0 16px; color: var(--color-text); }
 .card p:last-child { margin-bottom: 0; }
 
 .card--flat {
-  border: none;
+  border: 1px solid var(--color-border);
   box-shadow: none;
-  background: var(--color-bg-alt);
+  background: transparent;
 }
 
 /* Karty-linki "4 strefy" na stronie głównej — prowadzą do hubów
@@ -591,33 +616,50 @@ p { margin: 0 0 16px; color: var(--color-text); }
    ranga informacji sygnalizowana samym kolorem, jak w serwisach
    towarzystw naukowych (czerwony = pilne, granat = wydarzenie,
    pomarańcz = wyróżnienie, zielony = informacja bieżąca). */
+/* Aktualności jako siatka realnych kart z datą, a nie wyśrodkowany
+   pogrubiony tekst na środku pustej sekcji. */
 .announcement-list {
-  max-width: 760px;
-  margin: 0 auto;
-  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  text-align: left;
 }
 .announcement {
-  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 28px;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-weight: 600;
   font-size: 1.05rem;
-  line-height: 1.5;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--color-border);
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  color: var(--color-navy);
+  transition: box-shadow 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
 }
-.announcement:last-child { border-bottom: none; }
+.announcement:hover {
+  box-shadow: var(--shadow-md);
+  border-color: rgba(13, 148, 136, 0.4);
+  transform: translateY(-2px);
+}
 .announcement time {
-  display: block;
-  font-weight: 400;
-  font-size: 0.78rem;
-  color: var(--color-text-muted);
-  margin-bottom: 6px;
-  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-self: flex-start;
+  font-weight: 600;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-accent-dark);
+  background: var(--color-bg-navy-tint);
+  padding: 5px 10px;
+  border-radius: 999px;
 }
 .announcement a { color: inherit; }
-.announcement a:hover { text-decoration: underline; }
-.announcement--pilne { color: var(--color-red); }
-.announcement--wydarzenie { color: var(--color-navy); }
-.announcement--wyroznienie { color: var(--color-orange); }
-.announcement--info { color: var(--color-accent); }
+.announcement a:hover { text-decoration: none; color: var(--color-accent-dark); }
+.announcement--pilne time { color: var(--color-red); background: #fdecec; }
 
 /* ---------------- Lista dokumentów do pobrania ---------------- */
 .doc-list {
