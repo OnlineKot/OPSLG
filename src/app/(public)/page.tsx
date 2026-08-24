@@ -70,7 +70,7 @@ export default async function HomePage() {
       )}
 
       {news.length > 0 && (
-        <section className="section" id="aktualnosci">
+        <section className="section section--dark" id="aktualnosci">
           <div className="container">
             <div className="section-header">
               <span className="eyebrow">Aktualności</span>
@@ -96,7 +96,7 @@ export default async function HomePage() {
         </section>
       )}
 
-      <section className="section" id="czlonkostwo">
+      <section className="section section--dark" id="czlonkostwo">
         <div className="container">
           <div className="section-header">
             <span className="eyebrow">Członkostwo</span>

@@ -28,6 +28,16 @@
      dla którego strona czytała się jak serwis instytucji z 2009 r. */
   --font-heading: "Inter", "Segoe UI", Arial, Helvetica, sans-serif;
   --font-body: "Inter", "Segoe UI", Arial, Helvetica, sans-serif;
+  /* Monospace dla etykiet, dat i numeracji — nadaje techniczno-naukowy,
+     "profesjonalny" charakter bez uciekania się do ozdobników. */
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  /* Warstwy ciemnego motywu strony głównej */
+  --dark-bg: #0b0e11;
+  --dark-surface: #12161a;
+  --dark-line: rgba(255, 255, 255, 0.09);
+  --dark-line-strong: rgba(255, 255, 255, 0.16);
+  --dark-text: #e8ecef;
+  --dark-text-muted: #98a3ad;
   --radius: 10px;
   --shadow-sm: 0 1px 2px rgba(16, 20, 24, 0.04), 0 2px 8px rgba(16, 20, 24, 0.04);
   --shadow-md: 0 8px 30px rgba(16, 20, 24, 0.10);
@@ -92,11 +102,51 @@ p { margin: 0 0 16px; color: var(--color-text); }
 
 .section--alt { background: var(--color-bg-alt); }
 .section--navy {
-  background: var(--color-navy);
-  color: var(--color-text-inverse);
+  background: var(--dark-bg);
+  color: var(--dark-text);
 }
 .section--navy h2, .section--navy h3 { color: #ffffff; }
-.section--navy p { color: #cfd9e4; }
+.section--navy p { color: var(--dark-text-muted); }
+
+/* Ciemna sekcja z subtelną powierzchnią — używana na stronie głównej,
+   żeby cały landing był spójnie ciemny zamiast pasiasty (biały/ciemny). */
+.section--dark {
+  background: var(--dark-surface);
+  color: var(--dark-text);
+  border-top: 1px solid var(--dark-line);
+  border-bottom: 1px solid var(--dark-line);
+}
+.section--dark h2, .section--dark h3 { color: #ffffff; }
+.section--dark p { color: var(--dark-text-muted); }
+.section--dark .eyebrow { color: var(--color-accent-light); }
+.section--dark .announcement {
+  background: rgba(255, 255, 255, 0.025);
+  border-color: var(--dark-line);
+  color: #fff;
+}
+.section--dark .announcement:hover {
+  border-color: rgba(94, 234, 212, 0.35);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  background: rgba(255, 255, 255, 0.045);
+}
+.section--dark .announcement time {
+  background: rgba(94, 234, 212, 0.1);
+  color: var(--color-accent-light);
+}
+.section--dark .announcement a:hover { color: var(--color-accent-light); }
+.section--dark .card,
+.section--dark .card--flat {
+  background: rgba(255, 255, 255, 0.025);
+  border-color: var(--dark-line);
+}
+.section--dark .card h3 { color: #fff; }
+.section--dark .doc-list li { border-color: var(--dark-line); }
+.section--dark .doc-list a, .section--dark .doc-list li { color: var(--dark-text-muted); }
+.section--dark .btn--outline { color: #fff; border-color: var(--dark-line-strong); }
+.section--dark .btn--outline:hover { background: #fff; color: var(--dark-bg); border-color: #fff; }
+/* Linki tekstowe na ciemnym tle — domyślny teal jest na nim za ciemny. */
+.section--dark a:not(.btn):not(.announcement a),
+.section--editorial a:not(.btn) { color: var(--color-accent-light); }
 
 /* Nagłówki sekcji są wyrównane DO LEWEJ — wyśrodkowany blok "eyebrow +
    szeryfowy tytuł + kreska pod spodem" to najbardziej rozpoznawalny
@@ -112,6 +162,7 @@ p { margin: 0 0 16px; color: var(--color-text); }
   margin-bottom: 16px;
 }
 .section--navy .section-header h2,
+.section--dark .section-header h2,
 .section--editorial .section-header h2 { color: #ffffff; }
 
 /* ---------------- Editorial (dark) section ----------------
@@ -119,8 +170,12 @@ p { margin: 0 0 16px; color: var(--color-text); }
    duże numery pozycji, cienkie linie działowe. Używana w otwarciu
    strony głównej, żeby uniknąć efektu "szablonu AI" (boks-w-boksie). */
 .section--editorial {
-  background: var(--color-navy);
-  color: #dbe4ee;
+  background: var(--dark-bg);
+  color: var(--dark-text);
+  /* Padding jest konieczny: bez niego margines dolny ostatniego akapitu
+     "wycieka" poza sekcję (margin collapsing) i odsłania białe tło body,
+     przerywając ciemny landing białym paskiem. */
+  padding: 80px 0;
 }
 .section--editorial .eyebrow { color: var(--color-accent-light); }
 .section--editorial h2 { color: #ffffff; font-weight: 600; }
@@ -131,22 +186,26 @@ p { margin: 0 0 16px; color: var(--color-text); }
 }
 .section--editorial .section-header p { color: #b6c3d6; }
 
-.numbered-list { border-top: 1px solid rgba(255,255,255,0.15); }
+.numbered-list { border-top: 1px solid var(--dark-line); }
 .numbered-item {
   display: grid;
   grid-template-columns: 64px 1fr;
   gap: 24px;
-  padding: 28px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.15);
+  padding: 30px 0;
+  border-bottom: 1px solid var(--dark-line);
+  transition: border-color 0.2s ease;
 }
+.numbered-item:hover { border-bottom-color: var(--dark-line-strong); }
 .numbered-item__num {
-  font-family: var(--font-heading);
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
   color: var(--color-accent-light);
+  padding-top: 4px;
 }
 .numbered-item h3 { color: #ffffff; margin-bottom: 8px; font-weight: 600; }
-.numbered-item p { color: #b6c3d6; margin: 0; max-width: 640px; }
+.numbered-item p { color: var(--dark-text-muted); margin: 0; max-width: 640px; }
 
 /* Wiersz suchych faktów na ciemnym tle — bez ramek/cieni, oddzielony
    cienkimi pionowymi liniami zamiast pudełek. */
@@ -154,13 +213,13 @@ p { margin: 0 0 16px; color: var(--color-text); }
   display: flex;
   flex-wrap: wrap;
   gap: 0;
-  border-top: 1px solid rgba(255,255,255,0.15);
-  border-bottom: 1px solid rgba(255,255,255,0.15);
+  border-top: 1px solid var(--dark-line);
+  border-bottom: 1px solid var(--dark-line);
 }
 .fact-row__item {
   flex: 1 1 220px;
   padding: 32px 28px;
-  border-left: 1px solid rgba(255,255,255,0.15);
+  border-left: 1px solid var(--dark-line);
 }
 .fact-row__item:first-child { border-left: none; }
 .fact-row__item strong {
@@ -175,13 +234,24 @@ p { margin: 0 0 16px; color: var(--color-text); }
 .fact-row__item span { color: #b6c3d6; font-size: 0.92rem; }
 
 .eyebrow {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 0.72rem;
-  font-weight: 600;
+  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  font-weight: 500;
   color: var(--color-accent-dark);
-  margin-bottom: 14px;
+  margin-bottom: 16px;
+}
+/* Krótka kreska przed etykietą — techniczny detal zamiast ozdobnika. */
+.eyebrow::before {
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
 }
 
 /* Pasek CTA — treść po lewej, przycisk po prawej (zamiast wyśrodkowanej
@@ -425,19 +495,33 @@ p { margin: 0 0 16px; color: var(--color-text); }
    granatowego prostokąta. */
 .hero {
   position: relative;
-  background: var(--color-navy);
+  background: var(--dark-bg);
   color: #fff;
-  padding: 120px 0 104px;
+  padding: 128px 0 112px;
   overflow: hidden;
+}
+/* Siatka hairline w tle — techniczny, "inżynierski" detal, ledwo widoczny,
+   ale nadający głębi zamiast płaskiego prostokąta. */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--dark-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--dark-line) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 80% 60% at 70% 40%, #000 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 70% 40%, #000 20%, transparent 75%);
+  pointer-events: none;
 }
 .hero::before {
   content: "";
   position: absolute;
-  top: -30%;
-  right: -10%;
-  width: 55%;
-  height: 150%;
-  background: radial-gradient(closest-side, rgba(13, 148, 136, 0.28), transparent);
+  top: -35%;
+  right: -5%;
+  width: 60%;
+  height: 160%;
+  background: radial-gradient(closest-side, rgba(13, 148, 136, 0.22), transparent);
   pointer-events: none;
 }
 .hero .container { position: relative; }
