@@ -292,11 +292,11 @@ p { margin: 0 0 16px; color: var(--color-text); }
 
 /* Lista aktualności na podstronie — data w kolumnie obok treści,
    jak w archiwum komunikatów, a nie kafelki-akordeony. */
-.news-list { border-top: 1px solid var(--color-border); max-width: 900px; }
+.news-list { border-top: 1px solid var(--color-border); }
 .news-entry {
   display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 32px;
+  grid-template-columns: 180px minmax(0, 68ch);
+  gap: 48px;
   padding: 36px 0;
   border-bottom: 1px solid var(--color-border);
 }
@@ -321,10 +321,9 @@ p { margin: 0 0 16px; color: var(--color-text); }
   list-style: none;
   padding: 0;
   margin: 0;
-  max-width: 900px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 0 48px;
+  gap: 0 64px;
 }
 .benefit-list li {
   display: grid;
@@ -342,11 +341,14 @@ p { margin: 0 0 16px; color: var(--color-text); }
   padding-top: 4px;
 }
 
-.def-list { border-top: 1px solid var(--color-border); max-width: 860px; }
+/* Linie działowe biegną przez całą szerokość kontenera (tak jak nagłówek
+   i stopka), a długość wiersza tekstu ogranicza sama kolumna opisu —
+   inaczej reguły urywały się w połowie ekranu. */
+.def-list { border-top: 1px solid var(--color-border); }
 .def-item {
   display: grid;
-  grid-template-columns: minmax(180px, 260px) 1fr;
-  gap: 32px;
+  grid-template-columns: minmax(180px, 280px) minmax(0, 68ch);
+  gap: 48px;
   padding: 28px 0;
   border-bottom: 1px solid var(--color-border);
 }
