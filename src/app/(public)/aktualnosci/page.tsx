@@ -14,38 +14,42 @@ export default async function AktualnosciPage() {
   const news = await getPublishedNews();
 
   return (
-    <section className="section" style={{ paddingTop: 56 }}>
-      <div className="container">
-        <p className="breadcrumb"><a href="/">Strona główna</a> / Aktualności</p>
-
-        <div className="section-header" style={{ textAlign: "left", maxWidth: 820, marginLeft: 0 }}>
+    <>
+      <section className="page-hero">
+        <div className="container">
+          <p className="breadcrumb"><Link href="/">Strona główna</Link> / Aktualności</p>
           <span className="eyebrow">Aktualności</span>
           <h1>Aktualności</h1>
+          <p className="lede">Komunikaty Zarządu, wydarzenia i informacje o działalności Towarzystwa.</p>
         </div>
+      </section>
 
-        {news.length === 0 && <p>Brak aktualności do wyświetlenia.</p>}
+      <section className="section">
+        <div className="container">
+          {news.length === 0 && <p>Brak aktualności do wyświetlenia.</p>}
 
-        <div className="grid grid--2">
-          {news.map((item, index) => (
-            <details className="tile-card" key={item.id} open={index < 2}>
-              <summary>
-                <span className="tile-card__icon">{item.title.charAt(0)}</span> {item.title}
-              </summary>
-              <div className="tile-card__body">
-                {item.eventDate && (
-                  <p className="small" style={{ marginBottom: 8 }}>
-                    <time dateTime={item.eventDate.toISOString()}>
-                      {item.eventDate.toLocaleDateString("pl-PL", { day: "2-digit", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit" })}
+          <div className="news-list">
+            {news.map((item) => {
+              const date = item.eventDate ?? item.createdAt;
+              return (
+                <article className="news-entry" key={item.id}>
+                  <div className="news-entry__meta">
+                    <time dateTime={date.toISOString()}>
+                      {date.toLocaleDateString("pl-PL", { day: "2-digit", month: "long", year: "numeric" })}
                     </time>
-                  </p>
-                )}
-                <RichText value={item.body} />
-                <p><Link href={`/aktualnosci/${item.slug}`}>Stały link do wpisu →</Link></p>
-              </div>
-            </details>
-          ))}
+                  </div>
+                  <div className="news-entry__body">
+                    <h2>
+                      <Link href={`/aktualnosci/${item.slug}`}>{item.title}</Link>
+                    </h2>
+                    <RichText value={item.body} />
+                  </div>
+                </article>
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

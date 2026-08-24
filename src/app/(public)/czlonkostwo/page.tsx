@@ -17,48 +17,48 @@ export default async function CzlonkostwoPage() {
   ]);
 
   return (
-    <section className="section" style={{ paddingTop: 56 }}>
-      <div className="container">
-        <p className="breadcrumb"><a href="/">Strona główna</a> / Członkostwo</p>
-
-        <div className="section-header" style={{ textAlign: "left", maxWidth: 820, marginLeft: 0 }}>
+    <>
+      <section className="page-hero">
+        <div className="container">
+          <p className="breadcrumb"><Link href="/">Strona główna</Link> / Członkostwo</p>
           <span className="eyebrow">Członkostwo</span>
           <h1>{intro?.title ?? "Dołącz do PTLGK!"}</h1>
           {intro?.lede && <p className="lede">{intro.lede}</p>}
         </div>
+      </section>
 
-        {benefits.length > 0 && (
-          <>
-            <div className="section-header" style={{ textAlign: "left", maxWidth: 820, marginLeft: 0, marginTop: 8 }}>
-              <h2 style={{ fontSize: "1.3rem", borderBottom: "none" }}>Co daje członkostwo?</h2>
-            </div>
-            <div className="grid grid--3" style={{ marginBottom: 40 }}>
-              {benefits.map((item) => (
-                <div className="card card--flat" key={item.id}>
-                  <div className="card__icon card__icon--zone">{item.title}</div>
-                  <p>{item.body.charAt(0).toUpperCase() + item.body.slice(1)}.</p>
-                </div>
-              ))}
-            </div>
-          </>
-        )}
+      <section className="section">
+        <div className="container">
+          {benefits.length > 0 && (
+            <>
+              <h2 style={{ fontSize: "1.5rem", marginBottom: 24 }}>Co daje członkostwo?</h2>
+              <ul className="benefit-list">
+                {benefits.map((item, index) => (
+                  <li key={item.id}>
+                    <span className="benefit-list__num">{String(index + 1).padStart(2, "0")}</span>
+                    <span>{item.body.charAt(0).toUpperCase() + item.body.slice(1)}</span>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
 
-        {intro?.body && (
-          <details className="tile-card" open style={{ maxWidth: 820 }}>
-            <summary><span className="tile-card__icon">?</span> Jak zostać członkiem?</summary>
-            <div className="tile-card__body">
+          {intro?.body && (
+            <div style={{ marginTop: 56, maxWidth: 760 }}>
+              <h2 style={{ fontSize: "1.5rem", marginBottom: 16 }}>Jak zostać członkiem?</h2>
               <RichText value={intro.body} />
             </div>
-          </details>
-        )}
+          )}
 
-        {intro?.closing && (
-          <p className="text-center" style={{ marginTop: 32 }}>{intro.closing}</p>
-        )}
-        <p className="text-center">
-          <Link href="/dolacz" className="btn btn--primary" style={{ marginTop: 8 }}>Wypełnij deklarację członkowską</Link>
-        </p>
-      </div>
-    </section>
+          {intro?.closing && (
+            <p className="lede" style={{ maxWidth: 620, marginTop: 40 }}>{intro.closing}</p>
+          )}
+
+          <div style={{ marginTop: 32 }}>
+            <Link href="/dolacz" className="btn btn--primary">Wypełnij deklarację członkowską</Link>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

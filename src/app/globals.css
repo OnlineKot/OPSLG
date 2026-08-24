@@ -254,6 +254,121 @@ p { margin: 0 0 16px; color: var(--color-text); }
   opacity: 0.6;
 }
 
+/* ---------------- Nagłówek podstrony ----------------
+   Ciemny pasek otwierający każdą podstronę — daje ciągłość ze stroną
+   główną (wcześniej po ciemnym landingu klikało się w menu i lądowało
+   na gołej białej kartce) i osadza tytuł zamiast zawieszać go w pustce. */
+.page-hero {
+  position: relative;
+  background: var(--dark-bg);
+  color: var(--dark-text);
+  padding: 64px 0 72px;
+  overflow: hidden;
+}
+.page-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--dark-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--dark-line) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 70% 80% at 75% 30%, #000 10%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 80% at 75% 30%, #000 10%, transparent 70%);
+  pointer-events: none;
+}
+.page-hero .container { position: relative; }
+.page-hero h1 { color: #fff; max-width: 20ch; margin-bottom: 20px; }
+.page-hero .lede { color: var(--dark-text-muted); max-width: 62ch; margin-bottom: 0; }
+.page-hero .eyebrow { color: var(--color-accent-light); }
+.page-hero .breadcrumb { color: #6f7b86; margin-bottom: 24px; }
+.page-hero .breadcrumb a { color: #99a4ae; }
+.page-hero .breadcrumb a:hover { color: #fff; }
+
+/* Treść podstrony: czytelna kolumna tekstu, bez chowania rzeczy
+   w akordeony i bez kółek z pierwszą literą tytułu. */
+.prose-block { max-width: 760px; }
+.prose-block > * + * { margin-top: 0; }
+
+/* Lista aktualności na podstronie — data w kolumnie obok treści,
+   jak w archiwum komunikatów, a nie kafelki-akordeony. */
+.news-list { border-top: 1px solid var(--color-border); max-width: 900px; }
+.news-entry {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 32px;
+  padding: 36px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.news-entry__meta time {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent-dark);
+}
+.news-entry__body h2 { font-size: 1.35rem; margin-bottom: 12px; }
+.news-entry__body h2 a { color: var(--color-navy); }
+.news-entry__body h2 a:hover { color: var(--color-accent-dark); text-decoration: none; }
+.news-entry__body p { color: var(--color-text-muted); }
+.news-entry__body p:last-child { margin-bottom: 0; }
+@media (max-width: 720px) {
+  .news-entry { grid-template-columns: 1fr; gap: 10px; }
+}
+
+/* Lista korzyści — numerowana, w dwóch kolumnach, bez kart-pudełek. */
+.benefit-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 900px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 0 48px;
+}
+.benefit-list li {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 12px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+.benefit-list__num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--color-accent-dark);
+  padding-top: 4px;
+}
+
+.def-list { border-top: 1px solid var(--color-border); max-width: 860px; }
+.def-item {
+  display: grid;
+  grid-template-columns: minmax(180px, 260px) 1fr;
+  gap: 32px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.def-item h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--color-navy);
+}
+.def-item__num {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--color-accent-dark);
+  margin-bottom: 6px;
+}
+.def-item p { margin: 0; color: var(--color-text-muted); }
+@media (max-width: 720px) {
+  .def-item { grid-template-columns: 1fr; gap: 8px; }
+}
+
 /* Pasek CTA — treść po lewej, przycisk po prawej (zamiast wyśrodkowanej
    kolumny na środku pustej sekcji). */
 .cta-band { padding: 64px 0; }

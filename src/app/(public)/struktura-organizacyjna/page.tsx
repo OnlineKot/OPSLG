@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { getIntro, getItems } from "@/lib/content";
 
 export const revalidate = 60;
@@ -12,29 +13,35 @@ export default async function StrukturaPage() {
   const [intro, items] = await Promise.all([getIntro("struktura"), getItems("struktura")]);
 
   return (
-    <section className="section" style={{ paddingTop: 56 }}>
-      <div className="container">
-        <p className="breadcrumb"><a href="/">Strona główna</a> / Struktura</p>
-
-        <div className="section-header" style={{ textAlign: "left", maxWidth: 820, marginLeft: 0 }}>
+    <>
+      <section className="page-hero">
+        <div className="container">
+          <p className="breadcrumb"><Link href="/">Strona główna</Link> / Struktura</p>
           <span className="eyebrow">Struktura</span>
           <h1>{intro?.title ?? "Struktura organizacyjna"}</h1>
           {intro?.lede && <p className="lede">{intro.lede}</p>}
         </div>
+      </section>
 
-        <div className="grid grid--2">
-          {items.map((item, index) => (
-            <details className="tile-card" key={item.id} open={index === 0}>
-              <summary><span className="tile-card__icon">{item.title.charAt(0)}</span> {item.title}</summary>
-              <div className="tile-card__body"><p>{item.body}</p></div>
-            </details>
-          ))}
+      <section className="section">
+        <div className="container">
+          <div className="def-list">
+            {items.map((item, index) => (
+              <div className="def-item" key={item.id}>
+                <h3>
+                  <span className="def-item__num">{String(index + 1).padStart(2, "0")}</span>
+                  {item.title}
+                </h3>
+                <p>{item.body}</p>
+              </div>
+            ))}
+          </div>
+
+          {intro?.closing && (
+            <p className="lede" style={{ maxWidth: 620, marginTop: 40 }}>{intro.closing}</p>
+          )}
         </div>
-
-        {intro?.closing && (
-          <p className="text-center" style={{ marginTop: 32 }}>{intro.closing}</p>
-        )}
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

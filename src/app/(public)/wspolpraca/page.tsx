@@ -13,18 +13,29 @@ export default async function WspolpracaPage() {
   const intro = await getIntro("wspolpraca");
 
   return (
-    <section className="section" style={{ paddingTop: 56 }}>
-      <div className="container">
-        <p className="breadcrumb"><a href="/">Strona główna</a> / Współpraca</p>
-
-        <div className="section-header" style={{ textAlign: "left", maxWidth: 820, marginLeft: 0 }}>
+    <>
+      <section className="page-hero">
+        <div className="container">
+          <p className="breadcrumb"><Link href="/">Strona główna</Link> / Współpraca</p>
           <span className="eyebrow">Współpraca</span>
           <h1>{intro?.title ?? "Współpraca"}</h1>
           {intro?.lede && <p className="lede">{intro.lede}</p>}
         </div>
+      </section>
 
-        <Link href="/kontakt" className="btn btn--primary">Skontaktuj się z nami</Link>
-      </div>
-    </section>
+      <section className="section">
+        <div className="container">
+          <div style={{ maxWidth: 620 }}>
+            <p className="lede">
+              Jesteśmy otwarci na współpracę z ośrodkami klinicznymi, laboratoriami,
+              organizacjami pacjentów oraz partnerami krajowymi i zagranicznymi.
+            </p>
+            <div style={{ marginTop: 24 }}>
+              <Link href="/kontakt" className="btn btn--primary">Skontaktuj się z nami</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { getContactInfo, getIntro } from "@/lib/content";
 
 export const revalidate = 60;
@@ -12,41 +13,46 @@ export default async function KontaktPage() {
   const [intro, contact] = await Promise.all([getIntro("kontakt"), getContactInfo()]);
 
   return (
-    <section className="section" style={{ paddingTop: 56 }}>
-      <div className="container">
-        <p className="breadcrumb"><a href="/">Strona główna</a> / Kontakt</p>
-
-        <div className="section-header" style={{ textAlign: "left", maxWidth: 820, marginLeft: 0 }}>
+    <>
+      <section className="page-hero">
+        <div className="container">
+          <p className="breadcrumb"><Link href="/">Strona główna</Link> / Kontakt</p>
           <span className="eyebrow">Kontakt</span>
           <h1>{intro?.title ?? "Skontaktuj się z nami"}</h1>
+          <p className="lede">
+            Chętnie odpowiemy na pytania dotyczące Towarzystwa, członkostwa lub współpracy.
+          </p>
         </div>
+      </section>
 
-        <div className="grid grid--2" style={{ gap: 48, alignItems: "start" }}>
-          <div>
-            <p className="lede" style={{ fontSize: "1rem" }}>
-              Napisz do nas bezpośrednio — chętnie odpowiemy na pytania dotyczące Towarzystwa,
-              członkostwa lub współpracy.
-            </p>
-            {contact && (
-              <a href={`mailto:${contact.email}`} className="btn btn--primary" style={{ marginTop: 8 }}>
-                Napisz e-mail
-              </a>
-            )}
-          </div>
-
-          {contact && (
-            <div className="info-panel">
-              <h3>Zarząd Główny PTLGK</h3>
-              <ul className="info-list">
-                <li><span className="icon">📍</span> {contact.address}</li>
-                <li><span className="icon">📞</span> {contact.phone}</li>
-                <li><span className="icon">✉️</span> <a href={`mailto:${contact.email}`}>{contact.email}</a></li>
-                <li><span className="icon">🕘</span> Biuro czynne: {contact.officeHours}</li>
-              </ul>
+      {contact && (
+        <section className="section">
+          <div className="container">
+            <div className="def-list">
+              <div className="def-item">
+                <h3>Adres</h3>
+                <p>{contact.address}</p>
+              </div>
+              <div className="def-item">
+                <h3>Telefon</h3>
+                <p><a href={`tel:${contact.phone.replace(/\s/g, "")}`}>{contact.phone}</a></p>
+              </div>
+              <div className="def-item">
+                <h3>E-mail</h3>
+                <p><a href={`mailto:${contact.email}`}>{contact.email}</a></p>
+              </div>
+              <div className="def-item">
+                <h3>Biuro czynne</h3>
+                <p>{contact.officeHours}</p>
+              </div>
             </div>
-          )}
-        </div>
-      </div>
-    </section>
+
+            <div style={{ marginTop: 32 }}>
+              <a href={`mailto:${contact.email}`} className="btn btn--primary">Napisz e-mail</a>
+            </div>
+          </div>
+        </section>
+      )}
+    </>
   );
 }
