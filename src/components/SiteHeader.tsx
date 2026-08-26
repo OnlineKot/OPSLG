@@ -42,10 +42,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="header-cta">
-          <Link href="/dolacz" className="btn--card">
-            <span className="btn--card__sub">PTLGK</span>
-            <span className="btn--card__label">Dołącz do nas</span>
-          </Link>
+          <Link href="/dolacz" className="btn btn--primary btn--sm">Dołącz do nas</Link>
         </div>
       </div>
     </header>
