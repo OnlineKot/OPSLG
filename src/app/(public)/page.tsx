@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getIntro, getItems, getPublishedNews } from "@/lib/content";
+import { HelixGraphic } from "@/components/HelixGraphic";
 
 export const revalidate = 60;
 
@@ -17,14 +18,17 @@ export default async function HomePage() {
   return (
     <>
       <section className="hero">
-        <div className="container">
-          <div>
+        <div className="container hero__grid">
+          <div className="hero__content">
             <h1>{hero?.title ?? "Genetycy kliniczni, łączcie się"}</h1>
             {hero?.lede && <p className="lede">{hero.lede}</p>}
             <div className="hero__actions">
               <Link href="/dolacz" className="btn btn--primary">Zostań członkiem</Link>
               <Link href="/o-nas" className="btn btn--outline-light">Poznaj naszą misję</Link>
             </div>
+          </div>
+          <div className="hero__visual" aria-hidden="true">
+            <HelixGraphic />
           </div>
         </div>
       </section>

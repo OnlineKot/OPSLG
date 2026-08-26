@@ -1,5 +1,6 @@
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { RevealOnScroll } from "@/components/RevealOnScroll";
 
 export default function PublicLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -8,6 +9,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
       <SiteHeader />
       <main id="tresc-glowna">{children}</main>
       <SiteFooter />
+      <RevealOnScroll />
     </>
   );
 }
